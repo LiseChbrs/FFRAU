@@ -9,18 +9,29 @@ import GestionInscription.Coureur;
 public class EditionRallye extends Rallye{
 	private String dateDebER;
 	private String dateFinER;
-	private String nomER;
+	private int numER;
 	private int anneeER;
 	private ArrayList<Etape> etapes;
 	private ArrayList<Coureur> coureurs;
 
-
+	/***
+	 * 
+	 * @param nomR
+	 * @param villeR
+	 * @param paysR
+	 * @param regle
+	 * @param dateDebER JJ/MM/AAAA
+	 * @param dateFinER JJ/MM/AAAA
+	 * @param nomER
+	 * @param anneeER
+	 */
 	public EditionRallye(String nomR, String villeR, String paysR, TypeRegle regle, String dateDebER, String dateFinER,
-			String nomER, int anneeER) {
+			int nomER, int anneeER) {
 		super(nomR, villeR, paysR, regle);
+
 		this.dateDebER = dateDebER;
 		this.dateFinER = dateFinER;
-		this.nomER = nomER;
+		this.numER = nomER;
 		this.anneeER = anneeER;
 		this.setEtapes(new ArrayList<Etape>());
 		this.coureurs = new ArrayList<Coureur>();
@@ -50,7 +61,7 @@ public class EditionRallye extends Rallye{
 			i++;
 		}
 		if(!found) System.out.println("L'étape n'existe pas.");
-		
+
 	}
 
 	public void addEtape(Etape e) {
@@ -83,13 +94,13 @@ public class EditionRallye extends Rallye{
 	}
 
 
-	public String getNomER() {
-		return nomER;
+	public int getNumER() {
+		return numER;
 	}
 
 
-	public void setNomER(String nomER) {
-		this.nomER = nomER;
+	public void setNumER(int nomER) {
+		this.numER = nomER;
 	}
 
 
@@ -113,5 +124,23 @@ public class EditionRallye extends Rallye{
 	}
 
 
+	/***
+	 * Egalité sur le nom du rallye, et le numéro d'édition de l'éditionRallye
+	 */
+	public boolean equals(Object o) {
+		if(o instanceof EditionRallye ) {
+			if(super.getNomR().equals(((EditionRallye) o).getNomR())) {
+				if(this.numER == ((EditionRallye) o).getNumER()) {
+					return true;
+				}else {
+					return false;
+				}
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
+	}
 
 }
