@@ -14,6 +14,17 @@ public class ClassementAnnuel {
 		this.listER.add(er);
 	}
 	
+	public void getClassementAnnuel(int annee) {
+		
+	}
+	
+	public void calculerClassementAnnuel(int annee) {
+		
+	}
+	
+	public void miseAJourClassementAnnuel(ClassementGeneralProvisoire cg) {
+		
+	}
 	
 
 }
