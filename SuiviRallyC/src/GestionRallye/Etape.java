@@ -22,6 +22,13 @@ public class Etape {
 		this.coeffDiff = coeffDiff;
 		this.speciales = new ArrayList<Speciale>();
 	}
+
+	//METHODS
+	public void addSpeciale(Speciale s) {
+		this.speciales.add(s);
+	}
+
+	//GETTERS & SETTERS
 	public Difficulte getDifficulte() {
 		return difficulte;
 	}

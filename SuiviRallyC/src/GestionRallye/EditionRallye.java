@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import GestionDonnees.Rallye;
 import GestionDonnees.TypeRegle;
+import GestionInscription.Coureur;
 
 public class EditionRallye extends Rallye{
 private String dateDebER;
@@ -11,6 +12,7 @@ private String dateFinER;
 private String nomER;
 private int anneeER;
 private ArrayList<Etape> etapes;
+private ArrayList<Coureur> coureurs;
 	
 	
 	public EditionRallye(String nomR, String villeR, String paysR, TypeRegle regle, String dateDebER, String dateFinER,
@@ -21,9 +23,21 @@ private ArrayList<Etape> etapes;
 	this.nomER = nomER;
 	this.anneeER = anneeER;
 	this.setEtapes(new ArrayList<Etape>());
+	this.coureurs = new ArrayList<Coureur>();
 }
+	
+	//METHODS 
 
-
+	public void addEtape(Etape e) {
+		this.etapes.add(e);
+	}
+	
+	public void addCoureur(Coureur c) {
+		this.coureurs.add(c);
+	}
+	
+	//GETTERS&SETTERS
+	
 	public String getDateDebER() {
 		return dateDebER;
 	}
