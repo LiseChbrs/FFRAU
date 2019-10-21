@@ -1,6 +1,9 @@
 package GestionClassement;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import GestionInscription.Coureur;
 
 public class ClassementGeneralProvisoire {
 	ArrayList<ClassementEtape> listClassementEtapes;
@@ -14,6 +17,10 @@ public class ClassementGeneralProvisoire {
 	}
 	
 	public void calculerClassementG() {
+		HashMap<Coureur, Double> sumTemps = new HashMap<Coureur, Double>();
+		for (ClassementEtape ce : listClassementEtapes) {
+			
+		}
 		
 	}
 	

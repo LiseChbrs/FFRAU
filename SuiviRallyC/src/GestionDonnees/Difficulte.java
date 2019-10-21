@@ -1,10 +1,10 @@
 package GestionDonnees;
 public enum Difficulte {
-	sans_difficulté_particulière,
-	difficulté_mineures,
-	difficulté_moyenne,
+	sans_difficulte_particuliere,
+	difficulte_mineures,
+	difficulte_moyenne,
 	difficile,
-	très_difficile
+	tres_difficile
 }
 
 
