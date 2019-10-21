@@ -92,7 +92,7 @@ public class ClassementGeneralProvisoire {
 				break for1;
 			}
 		}
-		ArrayList<Constructeur> classCons = new ArrayList<Constructeur>();
+		
 		
 		
 		
