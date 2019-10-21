@@ -92,11 +92,7 @@ public class ClassementGeneralProvisoire {
 				break for1;
 			}
 		}
-		
-		
-		
-		
-		
+		ArrayList lst = new ArrayList();
 		
 		return result;
 	}
