@@ -2,7 +2,7 @@ package GestionDonnees;
 
 /***
  * Classe Données pour Rallye
- * @author MIAGE UT1
+ * @author Romain Giroux
  *
  */
 public class Rallye {
@@ -10,14 +10,30 @@ public class Rallye {
 	private String nomR;
 	private String villeR;
 	private String paysR;
+	private TypeRegle regle;
 	
 	
-	public Rallye(String nomR, String villeR, String paysR) {
+	public Rallye(String nomR, String villeR, String paysR,TypeRegle regle) {
 		super();
 		this.nomR = nomR;
 		this.villeR = villeR;
 		this.paysR = paysR;
+		this.regle = regle;
 	}
+	
+	
+
+	public TypeRegle getRegle() {
+		return regle;
+	}
+
+	public void setRegle(TypeRegle regle) {
+		this.regle = regle;
+	}
+
+
+
+
 	public String getNomR() {
 		return nomR;
 	}
