@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import static java.util.stream.Collectors.*;
+import static java.util.Map.Entry.*;
 import GestionInscription.Constructeur;
 import GestionInscription.Coureur;
 
@@ -92,8 +97,15 @@ public class ClassementGeneralProvisoire {
 				break for1;
 			}
 		}
+	    HashMap<Constructeur, Integer> sorted = result
+	            .entrySet()
+	            .stream()
+	            .sorted(comparingByValue())
+	            .collect(
+	                toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
+	                    LinkedHashMap::new));
 		
-		return result;
+		return sorted;
 	}
 	
 
