@@ -40,6 +40,9 @@ public class Coureur {
 		return null;
 	}
 
+	public double calculerTempsCoefCorrectif(double temps) {
+		return temps*this.vehicule.calculerCoeffCorrectif();
+	}
 
 
 	//GETTERS & SETTERS
@@ -111,5 +114,15 @@ public class Coureur {
 		this.rhesusC = rhesusC;
 	}
 
+	/***
+	 * Egalité sur le numéro de coureur
+	 */
+	public boolean equals(Object o) {
+		if(o instanceof Coureur) {
+			return (this.numC == ((Coureur) o).getNumC());
+		}else {
+			return false;
+		}
+	}
 
 }

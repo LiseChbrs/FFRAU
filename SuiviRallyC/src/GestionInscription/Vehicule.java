@@ -2,20 +2,20 @@ package GestionInscription;
 
 public abstract class Vehicule {
 
-	private int coeffCorrectif;
-	private String immatV;
-	private Constructeur constructeurAuto;
+	protected double coeffCorrectif;
+	protected String immatV;
+	protected Constructeur constructeurAuto;
 	
 	
-	public Vehicule(int coeffCorrectif, String immatV,Constructeur cons) {
+	public Vehicule( String immatV,Constructeur cons) {
 		super();
-		this.coeffCorrectif = coeffCorrectif;
+		this.coeffCorrectif = 1;
 		this.immatV = immatV;
 		this.constructeurAuto = cons;
 	}
 
 
-	public int getCoeffCorrectif() {
+	public double getCoeffCorrectif() {
 		return coeffCorrectif;
 	}
 
@@ -33,6 +33,11 @@ public abstract class Vehicule {
 	public void setImmatV(String immatV) {
 		this.immatV = immatV;
 	}
+	/***
+	 * Calcule est retourne le nouveau coef
+	 * @return
+	 */
+	protected abstract double calculerCoeffCorrectif();
 	
 	
 }
