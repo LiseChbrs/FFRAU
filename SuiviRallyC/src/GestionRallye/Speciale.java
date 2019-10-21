@@ -6,8 +6,8 @@ public class Speciale {
 	private int numOrdreS;
 	private double chronoLimiteS;
 	private TypeRegleSpecial typeR;
-	
-	
+
+
 	public Speciale(double distanceParcS, int numOrdreS, double chronoLimiteS, TypeRegleSpecial typeR) {
 		super();
 		this.distanceParcS = distanceParcS;
@@ -55,8 +55,14 @@ public class Speciale {
 	public void setTypeR(TypeRegleSpecial typeR) {
 		this.typeR = typeR;
 	}
-	
-	
-	
-	
+
+
+	public boolean equals(Object o) {
+		if (o instanceof Speciale) {
+			return (this.numOrdreS == ((Speciale) o).getNumOrdreS());
+		}else {
+			return false;
+		}
+	}
+
 }
