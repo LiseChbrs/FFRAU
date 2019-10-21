@@ -77,6 +77,9 @@ public class Etape {
 
 
 
+	/***
+	 * Deux etapes sont similaires lorsqu'elle ont le même numéro d'ordre.
+	 */
 	public boolean equals(Object o) {
 		if(o instanceof Etape) {
 			return ((Etape) o).getNumEtape() == this.numEtape;

@@ -1,4 +1,5 @@
 package GestionClassement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import GestionInscription.Coureur;
 import GestionRallye.Speciale;;
@@ -28,8 +29,8 @@ public class ClassementEtape {
 		
 	}
 	
-	public void calculerClassement() {
-		
+	public ArrayList<Couple> calculerClassement() {
+		return null;
 	}
 	
 
