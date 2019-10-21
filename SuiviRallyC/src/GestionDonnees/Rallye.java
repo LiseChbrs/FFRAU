@@ -11,8 +11,8 @@ public class Rallye {
 	private String villeR;
 	private String paysR;
 	private TypeRegle regle;
-	
-	
+
+
 	public Rallye(String nomR, String villeR, String paysR,TypeRegle regle) {
 		super();
 		this.nomR = nomR;
@@ -20,8 +20,11 @@ public class Rallye {
 		this.paysR = paysR;
 		this.regle = regle;
 	}
-	
-	
+
+
+	//METHODS
+
+	//GETTERS & SETTERS 
 
 	public TypeRegle getRegle() {
 		return regle;
@@ -30,9 +33,6 @@ public class Rallye {
 	public void setRegle(TypeRegle regle) {
 		this.regle = regle;
 	}
-
-
-
 
 	public String getNomR() {
 		return nomR;
@@ -52,6 +52,6 @@ public class Rallye {
 	public void setPaysR(String paysR) {
 		this.paysR = paysR;
 	}
-	
-	
+
+
 }

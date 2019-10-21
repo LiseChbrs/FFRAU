@@ -1,7 +1,10 @@
 package GestionInscription;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import GestionClassement.ClassementEtape;
+import GestionRallye.EditionRallye;
 import GestionRallye.Etape;
 
 public class Coureur {
@@ -14,6 +17,9 @@ public class Coureur {
 	private char rhesusC;
 	private Vehicule vehicule;
 	private Constructeur constructeur;
+	private ArrayList<ClassementEtape> classementEtapes;
+	private ArrayList<EditionRallye> participations;
+
 
 	public Coureur(int numC, String nomC, String prenomC, String dateNaissC, String grSanguin, char rhesusC,Vehicule vehicule) {
 		super();
@@ -24,6 +30,8 @@ public class Coureur {
 		this.grSanguin = grSanguin;
 		this.rhesusC = rhesusC;
 		this.vehicule = vehicule;
+		this.classementEtapes = new ArrayList<ClassementEtape>();
+		this.participations = new ArrayList<EditionRallye>();
 	}
 
 	//METHODS
@@ -35,6 +43,20 @@ public class Coureur {
 
 
 	//GETTERS & SETTERS
+	public void addEdition(EditionRallye e) {
+		this.participations.add(e);
+	}
+	public ArrayList<ClassementEtape> getClassementEtapes() {
+		return classementEtapes;
+	}
+
+	public void setClassementEtapes(ArrayList<ClassementEtape> classementEtapes) {
+		this.classementEtapes = classementEtapes;
+	}
+
+	public void addClassementEtape(ClassementEtape cl) {
+		this.classementEtapes.add(cl);
+	}
 
 	public Vehicule getVehicule() {
 		return vehicule;

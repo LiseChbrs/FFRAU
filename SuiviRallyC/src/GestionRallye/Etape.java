@@ -2,6 +2,7 @@ package GestionRallye;
 
 import java.util.ArrayList;
 
+import GestionClassement.ClassementEtape;
 import GestionDonnees.Difficulte;
 
 public class Etape {
@@ -10,16 +11,17 @@ public class Etape {
 	private int numEtape;
 	private int distanceParcE;
 	private double coeffDiff;
+	private ClassementEtape classement;
 
 
 
 
-	public Etape(Difficulte difficulte, int numEtape, int distanceParcE, double coeffDiff) {
+	public Etape(Difficulte difficulte, int numEtape, int distanceParcE) {
 		super();
 		this.difficulte = difficulte;
 		this.numEtape = numEtape;
 		this.distanceParcE = distanceParcE;
-		this.coeffDiff = coeffDiff;
+		//this.coeffDiff = coeffDiff;
 		this.speciales = new ArrayList<Speciale>();
 	}
 
@@ -29,9 +31,22 @@ public class Etape {
 	}
 
 	//GETTERS & SETTERS
+
 	public Difficulte getDifficulte() {
 		return difficulte;
 	}
+	public ClassementEtape getClassement() {
+		return classement;
+	}
+
+	/***
+	 * Permet d'inscrire le classement correspondant à une étape.
+	 * @param classement
+	 */
+	public void setClassement(ClassementEtape classement) {
+		this.classement = classement;
+	}
+
 	public void setDifficulte(Difficulte difficulte) {
 		this.difficulte = difficulte;
 	}
@@ -62,5 +77,12 @@ public class Etape {
 
 
 
+	public boolean equals(Object o) {
+		if(o instanceof Etape) {
+			return ((Etape) o).getNumEtape() == this.numEtape;
+		}else {
+			return false;
+		}
+	}
 
 }
