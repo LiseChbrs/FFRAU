@@ -70,6 +70,8 @@ public class Run {
 		/********************
 		 *Rallye 1 �dition 1  
 		 ********************/
+		
+		ClassementAnnuel ca = new ClassementAnnuel();
 
 		//Etapes
 		er1_1.addEtape(et1);
@@ -183,6 +185,16 @@ public class Run {
 		for(Coureur c : er1_1.getCoureurs()) {
 			System.out.println(c.toString() +" "+ c.getConstructeur());
 		}
+		
+		ca.addEditionRallye(er1_1);
+		ca.addEditionRallye(er1_2);
+		ca.addEditionRallye(er2_1);
+		ca.addEditionRallye(er3_1);
+		ArrayList<Couple> classAnnuel = ca.getClassementAnnuel(2018, "");
+		for (Couple couple : classAnnuel) {
+			System.out.println(couple.getKey() + " : " + couple.getValue());
+		}
+		
 
 		
 		for(Coureur x : er1_1.getCoureurs()) {

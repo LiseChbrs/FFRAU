@@ -172,7 +172,7 @@ public class EditionRallye extends Rallye{
 	}
 
 	/***
-	 * Retourne le dernier classementProvisoire et met l'état de l'édition ) clos.
+	 * Retourne le dernier classementProvisoire et met l'ï¿½tat de l'ï¿½dition ) clos.
 	 * @return
 	 */
 	public ClassementGeneralProvisoire calculerClassementDefinitif(){
@@ -195,6 +195,10 @@ public class EditionRallye extends Rallye{
 
 	public void setClassementRallye(ArrayList<ClassementGeneralProvisoire> classementRallye) {
 		this.classementRallye = classementRallye;
+	}
+	
+	public ArrayList<ClassementGeneralProvisoire> getClassementGeneralProvisoires(){
+		return this.classementRallye;
 	}
 
 
