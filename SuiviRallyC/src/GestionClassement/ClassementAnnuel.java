@@ -18,11 +18,9 @@ public class ClassementAnnuel {
 		ArrayList<Couple> listSum = new ArrayList<Couple>();
 		ArrayList<Couple> listPart = new ArrayList<Couple>();
 		for (EditionRallye er : listER) {
-			if (er.getAnneeER() == annee) {
+			if (er.getAnneeER() == annee && er.getClassementGeneralProvisoires().size() >=1) {
 				ClassementGeneralProvisoire cgp = er.calculerClassementDefinitif();
 				if (cgp != null) {
-					
-				
 				for (Couple cp : cgp.calculerClassementG(typeV)) {
 					boolean isExist = false;
 					for (Couple cpList : listSum) {
