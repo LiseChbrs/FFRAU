@@ -15,7 +15,7 @@ public class Run {
 	public static void main(String[] args) {
 
 		/*
-		 * Initialisation des données
+		 * Initialisation des donnï¿½es
 		 */
 
 		Constructeur cons1 = new Constructeur("Mercedes");
@@ -29,7 +29,7 @@ public class Run {
 		Vehicule v5 = new Voiture("LFES STRNG", 170, cons2);
 
 		Coureur c1 = new Coureur(1, "SMITH", "Elliott", "05-01-1970", "A", '-', v1);
-		Coureur c2 = new Coureur(2, "DUBOIS", "Clément", "03-10-1990", "B", '+', v2);
+		Coureur c2 = new Coureur(2, "DUBOIS", "Clement", "03-10-1990", "B", '+', v2);
 		Coureur c3 = new Coureur(3, "TYLER", "Emily", "12-09-1984", "AB", '-', v3);
 		Coureur c4 = new Coureur(4, "TAYLOR", "Liz", "07-12-1974", "O", '+', v4);
 		Coureur c5 = new Coureur(5, "SCAY", "Nicolas", "24-05-1979", "A", '+', v5);
@@ -49,7 +49,7 @@ public class Run {
 		EditionRallye er2_1 = new EditionRallye(r2.getNomR(), r2.getVilleR(), r2.getPaysR(), r2.getRegle(), "24-05-17", "31-05-17", 7, 2017);
 		EditionRallye er3_1 = new EditionRallye(r3.getNomR(), r3.getVilleR(), r3.getPaysR(), r3.getRegle(), "08-06-16", "17-06-16", 2, 2016);
 
-		//utilité du numéro d'étape dans le constructeur ?? On peut juste se servir de la position de l'étape dans l'arraylist
+		//utilitï¿½ du numï¿½ro d'ï¿½tape dans le constructeur ?? On peut juste se servir de la position de l'ï¿½tape dans l'arraylist
 		Etape et1 = new Etape(Difficulte.difficile, 1, 28);
 		Etape et2 = new Etape(Difficulte.difficulte_moyenne, 2, 20);
 		Etape et3 = new Etape(Difficulte.sans_difficulte_particuliere, 3, 18);
@@ -58,17 +58,17 @@ public class Run {
 		Etape et5 = new Etape(Difficulte.difficulte_mineures, 2, 19);
 		Etape et6 = new Etape(Difficulte.difficulte_moyenne, 3, 22);
 
-		//faut il vérifier que la somme des distanceparc des spéciale est égale à la distance de son étape ? 
+		//faut il vï¿½rifier que la somme des distanceparc des spï¿½ciale est ï¿½gale ï¿½ la distance de son ï¿½tape ? 
 		Speciale s1 = new Speciale(9.5, 1, 11.5, TypeRegleSpecial.speciale);
 		Speciale s2 = new Speciale(10.5, 2, 10.2, TypeRegleSpecial.superSpeciale);
 		Speciale s3 = new Speciale(8, 3, 11.3, TypeRegleSpecial.speciale);
 
 		/************************
-		 * Peuplement des données 
+		 * Peuplement des donnï¿½es 
 		 ************************/
 
 		/********************
-		 *Rallye 1 édition 1  
+		 *Rallye 1 ï¿½dition 1  
 		 ********************/
 
 		//Etapes
@@ -102,7 +102,7 @@ public class Run {
 		System.out.println(ce.calculerClassement());
 
 		/********************
-		 *Rallye 1 édition 2 
+		 *Rallye 1 ï¿½dition 2 
 		 ********************/
 
 		//Etapes
@@ -117,7 +117,7 @@ public class Run {
 		er1_2.addCoureur(c1);
 
 		/*
-		 *Rallye 2 édition 1 
+		 *Rallye 2 ï¿½dition 1 
 		 */
 
 		//Etapes
@@ -133,7 +133,7 @@ public class Run {
 		er2_1.addCoureur(c1);
 
 		/*
-		 *Rallye 3 édition 1 
+		 *Rallye 3 ï¿½dition 1 
 		 */
 
 		//Etapes
@@ -151,7 +151,7 @@ public class Run {
 		/**************
 		 * Classements*
 		 **************/
-		//ClassementGénéralRallye
+		//ClassementGï¿½nï¿½ralRallye
 		ClassementGeneralProvisoire cgp = new ClassementGeneralProvisoire();
 		cgp.addClassementEtape(ce);
 
@@ -182,7 +182,6 @@ public class Run {
 			System.out.println(c.toString() +" "+ c.getConstructeur());
 		}
 //BONJOUR BONJOUUUUUR
-		
 
 	}
 

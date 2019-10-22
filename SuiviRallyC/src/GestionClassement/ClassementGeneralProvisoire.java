@@ -140,7 +140,7 @@ public class ClassementGeneralProvisoire {
 	    HashMap<Constructeur, Integer> sorted = result
 	            .entrySet()
 	            .stream()
-	            .sorted(comparingByValue())
+	            .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 	            .collect(
 	                toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
 	                    LinkedHashMap::new));
