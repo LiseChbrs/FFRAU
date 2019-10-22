@@ -1,9 +1,5 @@
-/GestionClassement/
 /GestionDonnees/
-/GestionInscription/
-/GestionRallye/
-<<<<<<< HEAD
-=======
 /module-info.class
->>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
 /test/
+/GestionClassement/
+/GestionRallye/

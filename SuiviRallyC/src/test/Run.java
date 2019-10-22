@@ -1,5 +1,8 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import GestionClassement.*;
@@ -176,6 +179,7 @@ public class Run {
 			System.out.println(c.toString() +" "+ c.getConstructeur());
 		}
 //BONJOUR BONJOUUUUUR
+		
 
 	}
 

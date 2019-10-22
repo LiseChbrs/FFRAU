@@ -128,7 +128,6 @@ public class ClassementGeneralProvisoire {
 				result.put(c.getConstructeur(), result.get(c.getConstructeur()) + 1);
 				break;
 			case 8:
-				
 				break for1;
 			}
 		}
@@ -153,12 +152,6 @@ public class ClassementGeneralProvisoire {
         */
 		return sorted;
 	}
-//<<<<<<< HEAD
-//=======
-
-
-	
->>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
 
 	//METHODS
 	public ArrayList<ClassementEtape> getListClassementEtapes() {

@@ -37,6 +37,7 @@ public class EditionRallye extends Rallye{
 		this.anneeER = anneeER;
 		this.setEtapes(new ArrayList<Etape>());
 		this.coureurs = new ArrayList<Coureur>();
+		this.classementRallye = new ArrayList<ClassementGeneralProvisoire>();
 	}
 
 	//METHODS 
@@ -145,4 +146,17 @@ public class EditionRallye extends Rallye{
 		}
 	}
 
+	public void addClassementGeneralProvisoire(ClassementGeneralProvisoire cgp) {
+		this.classementRallye.add(cgp);
+	}
+
+	public ArrayList<Coureur> getCoureurs() {
+		return coureurs;
+	}
+
+	public ArrayList<ClassementGeneralProvisoire> getClassementRallye() {
+		return classementRallye;
+	}
+
+	
 }
