@@ -172,13 +172,20 @@ public class EditionRallye extends Rallye{
 	}
 
 	/***
-	 * Retourne le dernier classementProvisoire et met l'ï¿½tat de l'ï¿½dition ) clos.
+	 * Retourne le dernier classementProvisoire et met l'etat de l'edition clos.
 	 * @return
 	 */
 	public ClassementGeneralProvisoire calculerClassementDefinitif(){
 		this.etat = Etat.clos;
-		int index = this.getClassementRallye().size() -1;
-		return this.getClassementRallye().get(index);
+		int index = this.getClassementRallye().size();
+		ClassementGeneralProvisoire cgp;
+		if(index == 0) {
+			cgp = null;
+		}else {
+			cgp = this.getClassementRallye().get(index-1);
+		}
+		
+		return cgp;
 	}
 
 	public Etat getEtat() {
@@ -197,8 +204,9 @@ public class EditionRallye extends Rallye{
 		this.classementRallye = classementRallye;
 	}
 	
-	public ArrayList<ClassementGeneralProvisoire> getClassementGeneralProvisoires(){
-		return this.classementRallye;
+
+	public String toString() {
+		return this.getNomR()+" n°: "+this.numER;
 	}
 
 

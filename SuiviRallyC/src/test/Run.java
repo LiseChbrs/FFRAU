@@ -33,13 +33,13 @@ public class Run {
 		Coureur c3 = new Coureur(3, "TYLER", "Emily", "12-09-1984", "AB", '-', v3);
 		Coureur c4 = new Coureur(4, "TAYLOR", "Liz", "07-12-1974", "O", '+', v4);
 		Coureur c5 = new Coureur(5, "SCAY", "Nicolas", "24-05-1979", "A", '+', v5);
-		
+
 		//ASSOCIER 4 COUREURS
 		c1.associerConstructeur(cons1);
 		c2.associerConstructeur(cons1);
 		c3.associerConstructeur(cons3);
 		c4.associerConstructeur(cons3);
-		
+
 		Rallye r1 = new Rallye("Rallye de Paris", "Paris", "France", TypeRegle.rallye);
 		Rallye r2 = new Rallye("Championnat du Monde de Super Rallye", "Londres", "Angleterre", TypeRegle.superRallye);
 		Rallye r3 = new Rallye("Rallye de la Noix de Grenoble", "Grenoble", "France", TypeRegle.rallye);
@@ -70,8 +70,11 @@ public class Run {
 		/********************
 		 *Rallye 1 ï¿½dition 1  
 		 ********************/
-		
+
 		ClassementAnnuel ca = new ClassementAnnuel();
+
+
+
 
 		//Etapes
 		er1_1.addEtape(et1);
@@ -87,7 +90,7 @@ public class Run {
 		er1_1.addCoureur(c1);
 		er1_1.addCoureur(c4);
 		er1_1.addCoureur(c5);
-		
+
 		//FERMER AUX INSCRIPTIONS
 		er1_1.fermerInscription();
 
@@ -103,6 +106,35 @@ public class Run {
 
 		System.out.println(ce.calculerClassement());
 
+		ClassementEtape ceet2 = new ClassementEtape(et2);
+
+		ceet2.enregistrerTemps(c1, s1, 9.14);
+		ceet2.enregistrerTemps(c1,s2,10.13);
+		ceet2.enregistrerTemps(c2, s1, 6.18);
+		ceet2.enregistrerTemps(c2, s2, 7.89);
+		ceet2.enregistrerTemps(c3, s1, 17.43);
+		ceet2.enregistrerTemps(c2,s3, 13.74);
+		ceet2.enregistrerTemps(c5, s1, 9.14);
+		ceet2.enregistrerTemps(c5, s2, 18.10);
+
+
+		System.out.println(ceet2.calculerClassement());
+
+		ClassementEtape ceet3 = new ClassementEtape(et3);
+
+		ceet3.enregistrerTemps(c1, s1, 10.45);
+		ceet3.enregistrerTemps(c1,s2,8.65);
+		ceet3.enregistrerTemps(c2, s1, 16.18);
+		ceet3.enregistrerTemps(c2, s2, 14.45);
+		ceet3.enregistrerTemps(c3, s1, 19.34);
+		ceet3.enregistrerTemps(c2,s3, 11.45);
+		ceet3.enregistrerTemps(c5, s1, 4.7);
+		ceet3.enregistrerTemps(c5, s2, 14.02);
+
+
+		System.out.println(ceet3.calculerClassement());
+
+
 		/********************
 		 *Rallye 1 ï¿½dition 2 
 		 ********************/
@@ -114,9 +146,9 @@ public class Run {
 
 
 		//Coureurs
-		er1_2.addCoureur(c4);
-		er1_2.addCoureur(c2);
-		er1_2.addCoureur(c1);
+//		er1_2.addCoureur(c4);
+//		er1_2.addCoureur(c2);
+//		er1_2.addCoureur(c1);
 
 		/*
 		 *Rallye 2 ï¿½dition 1 
@@ -128,11 +160,11 @@ public class Run {
 		er2_1.addEtape(et6);
 
 		//Coureurs
-		er2_1.addCoureur(c3);
-		er2_1.addCoureur(c4);
-		er2_1.addCoureur(c5);
-		er2_1.addCoureur(c2);
-		er2_1.addCoureur(c1);
+//		er2_1.addCoureur(c3);
+//		er2_1.addCoureur(c4);
+//		er2_1.addCoureur(c5);
+//		er2_1.addCoureur(c2);
+//		er2_1.addCoureur(c1);
 
 		/*
 		 *Rallye 3 ï¿½dition 1 
@@ -144,10 +176,11 @@ public class Run {
 		er3_1.addEtape(et3);
 
 		//Coureurs 
-		er2_1.addCoureur(c1);
-		er2_1.addCoureur(c4);
-		er2_1.addCoureur(c2);
-		er2_1.addCoureur(c3);
+		er3_1.addCoureur(c1);
+		er3_1.addCoureur(c4);
+		er3_1.addCoureur(c2);
+		er3_1.addCoureur(c3);
+		er3_1.addCoureur(c5);
 
 
 		/**************
@@ -156,6 +189,9 @@ public class Run {
 		//ClassementGï¿½nï¿½ralRallye
 		ClassementGeneralProvisoire cgp = new ClassementGeneralProvisoire();
 		cgp.addClassementEtape(ce);
+		cgp.addClassementEtape(ceet2);
+		cgp.addClassementEtape(ceet3);
+
 
 		ClassementEtape ce2 = new ClassementEtape(et2);
 		Random rdm = new Random();
@@ -171,35 +207,107 @@ public class Run {
 		ce2.enregistrerTemps(c3, s2, rdm.nextDouble()+20);
 		ce2.enregistrerTemps(c3, s3, rdm.nextDouble()+20);
 
+		Rapport r11,r21;
+		r11 = new Rapport(+15,false);
+		r21 = new Rapport(-12.25,true);
+		ce2.enregistrerRapport(c1, r11);
+		//ce2.enregistrerRapport(c2, r21);
+
 		cgp.addClassementEtape(ce2);
 
 		System.out.println(cgp.getListClassementEtapes().get(1).calculerClassement());
-		
-		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Voiture"));
-		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Moto"));
-		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Camion"));
-		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementCons());
-		
 		er1_1.addClassementGeneralProvisoire(cgp);
-		
+		System.out.println("Voiture");
+		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Voiture"));
+		System.out.println("Moto");
+		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Moto"));
+		System.out.println("Camion");
+		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Camion")+"\n");
+		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementCons() +"\n");
+
+
+
 		for(Coureur c : er1_1.getCoureurs()) {
-			System.out.println(c.toString() +" "+ c.getConstructeur());
+			if(c.getConstructeur() == null) {
+				System.out.println(c.toString() +" => Aucun Constructeur");
+			}else {
+				System.out.println(c.toString() +" => "+ c.getConstructeur());
+			}
 		}
-		
+
+
+		//CLASSEMENT ANNUEL
 		ca.addEditionRallye(er1_1);
 		ca.addEditionRallye(er1_2);
 		ca.addEditionRallye(er2_1);
 		ca.addEditionRallye(er3_1);
 		ArrayList<Couple> classAnnuel = ca.getClassementAnnuel(2018, "");
+		int place =1;
 		for (Couple couple : classAnnuel) {
-			System.out.println(couple.getKey() + " : " + couple.getValue());
+			System.out.println("Place "+place+" "+couple.getKey() + " : " + couple.getValue());
+			place ++;
 		}
-		
 
+		ClassementGeneralProvisoire cgp3 = new ClassementGeneralProvisoire();
 		
-		for(Coureur x : er1_1.getCoureurs()) {
-			System.out.println(x.getHistoriqueCoureur());
+		//RETOUR CLASSEMENT RALLYE DE PARIS
+		System.out.println("\n Rallye de paris Voiture \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Voiture"));
+		System.out.println("\n Rallye de paris Moto \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Camion"));
+		System.out.println("\n Rallye de paris Camion \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Moto"));
+		
+		
+		
+		//Compléter les enregistrements
+		System.out.println("\n ETAPE DE "+er3_1.getNomR());
+		for(Etape e : er3_1.getEtapes()) {
+			e.setEtat(Etat.debute);
+			ClassementEtape cE;
+			cE = new ClassementEtape(e);
+
+			cE.enregistrerTemps(c3, s1, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c1, s1, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c2, s1, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c4, s1, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c5, s1, rdm.nextDouble()+20);
+
+			cE.enregistrerTemps(c3, s2, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c1, s2, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c2, s2, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c4, s2, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c5, s2, rdm.nextDouble()+20);
+
+			cE.enregistrerTemps(c3, s3, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c1, s3, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c2, s3, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c4, s3, rdm.nextDouble()+20);
+			cE.enregistrerTemps(c5, s3, rdm.nextDouble()+20);
+
+			e.setClassement(cE);
+			cgp3.addClassementEtape(cE);
 		}
+
+//		for(Etape e : er3_1.getEtapes()) {
+//			System.out.println(e.getClassement().calculerClassement());
+//		}
+
+		er3_1.addClassementGeneralProvisoire(cgp3);
+		System.out.println("Grenoble Voiture \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Voiture"));
+		System.out.println("Grenoble Moto \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Moto"));
+		System.out.println("Grenoble Camion \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Camion"));
+		
+		
+		ArrayList<Coureur> coureurs = new ArrayList<Coureur>();
+		coureurs.add(c1);
+		//coureurs.add(c2);
+		//coureurs.add(c3);
+		coureurs.add(c4);
+		coureurs.add(c5);
+		for(Coureur xi : coureurs) {
+			System.out.println("Coureur : "+xi.getNomC()+" "+xi.getPrenomC()+xi.getHistoriqueCoureur());
+		}
+
 	}
+
+	//
 
 }

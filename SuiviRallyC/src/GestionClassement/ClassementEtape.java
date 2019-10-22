@@ -39,10 +39,25 @@ public class ClassementEtape {
 		}
 	}
 
-
+	/***
+	 * Si on a déjà un rapport on voir pour ajouter les pénalités si
+	 * le coureur n'est pas éliminé.
+	 * Sinon, il nous suffit d'ajouter un nouveau rapport.
+	 * @param c
+	 * @param r
+	 */
 	public void enregistrerRapport(Coureur c, Rapport r) {
-		this.listRapport.put(c, r);
-	}
+		if(this.listRapport.containsKey(c)) {
+			if(r.getelimine()) {
+				this.listRapport.put(c, r);
+			}else {
+				r.penalitetps += this.listRapport.get(c).penalitetps;
+				this.listRapport.put(c, r);
+			}
+		}else {
+			this.listRapport.put(c, r);
+		}
+	}	
 
 
 
@@ -62,21 +77,31 @@ public class ClassementEtape {
 			}
 			//ON AFFECTE LE TEMPS SELON LE RAPPORT
 			if(this.listRapport.containsKey(e.getKey())) {
-				Rapport r = this.listRapport.get(e);
+				Rapport r = this.listRapport.get(e.getKey());
 				//Si on a une élimination on le retire de la liste.
 				if(r.getelimine()) {
-					this.listTemps.remove(e);
+					System.out.println(e.getKey().getNomC()+" "+e.getKey().getPrenomC()+" est éliminé");
 				}else {
 					//Sinon on lui impute une éventuelle pénalité/Bonus(selon le signe).
 					somme += r.getPenalite();
 				}
 
 			}
-			//On insère dans le classement.
-			//Permet d'avoir le temps minoré selon le coefficient.
+			//On insère dans le classement.Permet d'avoir le temps minoré selon le coefficient.
 			somme = this.calculerTempsCoef(somme);
 			classement.add(new Couple(e.getKey(),somme));
 		}
+		for(int i =0;i<classement.size();i++) {
+			Couple c = classement.get(i);
+			if(this.listRapport.containsKey(c.getKey())) {
+				Rapport r  = this.listRapport.get(c.getKey());
+				if(r.getelimine()) {
+					classement.remove(i);
+					i--;
+				}
+			}
+		}
+
 		//Il faut ensuite trier le classement.
 		Collections.sort(classement, (c1,c2) -> c1.getValue().compareTo(c2.getValue()));
 		return classement;
@@ -112,6 +137,7 @@ public class ClassementEtape {
 		sorted.put("Camion",camions);
 		return sorted;
 	}
+
 
 
 

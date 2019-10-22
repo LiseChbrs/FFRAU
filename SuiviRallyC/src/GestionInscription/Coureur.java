@@ -40,37 +40,39 @@ public class Coureur {
 	//METHODS
 	public HashMap<EditionRallye, Integer> getHistoriqueCoureur() {
 		HashMap<EditionRallye,Integer> historique = new HashMap<EditionRallye, Integer>();
-
 		for(EditionRallye r : this.participations) {
 			if(r.getCoureurs().contains(this)){
 				ClassementGeneralProvisoire cgp = r.calculerClassementDefinitif();
-				HashMap<Integer,ArrayList<Couple>> halo = new HashMap<>();
-				halo.put(1,cgp.calculerClassementG("Voiture"));
-				halo.put(2,cgp.calculerClassementG("Moto"));
-				halo.put(3,cgp.calculerClassementG("Camion"));
+				
+					HashMap<Integer,ArrayList<Couple>> halo = new HashMap<>();
+					halo.put(1,cgp.calculerClassementG("Voiture"));
+					halo.put(2,cgp.calculerClassementG("Moto"));
+					halo.put(3,cgp.calculerClassementG("Camion"));
 
-				boolean verification = false;
-
-				//ON CHERCHE A VOIR OU SE SITUE NOTRE COUREUR
-				int indice = 0;
-				for(Entry<Integer, ArrayList<Couple>> e : halo.entrySet()) {
-					if(e.getValue().contains(this)) {
-						indice = e.getKey();
-						verification = true;
-						break;
-					}
-				}
-
-				if(verification) {
-					int i =0;
-					for(Couple c : halo.get(indice)) {
-						if(c.getKey().equals(this)) {
-							historique.put(r, i);
+					boolean verification = false;
+					Couple coupleRef = new Couple(this, 999.99);
+					//ON CHERCHE A VOIR OU SE SITUE NOTRE COUREUR
+					int indice = 0;
+					for(Entry<Integer, ArrayList<Couple>> e : halo.entrySet()) {
+						
+						if(e.getValue().contains(coupleRef)) {
+							indice = e.getKey();
+							verification = true;
 							break;
 						}
-						i++;
 					}
-				}
+
+					if(verification) {
+						for(int i = 0; i<halo.get(indice).size();i++) {
+						Couple c = halo.get(indice).get(i);
+							if(c.getKey().equals(this)) {
+								int place = i+1;
+								historique.put(r, place);
+								break;
+							}
+						}
+					}
+				
 			}
 		}
 		return historique;
@@ -79,8 +81,8 @@ public class Coureur {
 	public double calculerTempsCoefCorrectif(double temps) {
 		return temps*this.vehicule.calculerCoeffCorrectif();
 	}
-	
-	
+
+
 	public void inscrire(EditionRallye r) {
 		this.participations.add(r);
 	}
@@ -163,10 +165,22 @@ public class Coureur {
 	 */
 	public boolean equals(Object o) {
 		if(o instanceof Coureur) {
-			return (this.numC == ((Coureur) o).getNumC());
+			if(this.nomC.equals(((Coureur) o).getNomC())) {
+				if(this.prenomC.equals(((Coureur) o).getPrenomC())) {
+					return true;
+				}else {
+					return false;
+				}
+			}else {
+				return false;
+			}
 		}else {
 			return false;
 		}
+	}
+
+	public int hashCode() {
+		return this.numC+(this.nomC.hashCode());
 	}
 
 	public String toString() {

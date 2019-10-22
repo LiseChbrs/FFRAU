@@ -26,6 +26,13 @@ public class Couple {
 		this.value = d;
 	}
 
+	public boolean equals(Object o) {
+		if (o instanceof Couple) {
+			return this.key.equals(((Couple) o).getKey());
+		}else {
+			return false;
+		}
+	}
 
 	public String toString() {
 		return this.key +" : "+this.value;

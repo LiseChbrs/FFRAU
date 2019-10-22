@@ -25,6 +25,12 @@ public class ClassementGeneralProvisoire {
 		this.listClassementEtapes.add(ce);
 	}
 	
+	/***
+	 * Retour un classement selon ce que l'on veut comme type de Véhicule 
+	 * "Voiture","Moto","Camion" ou "" si l'on veut les classement Généraux par coureur.
+	 * @param typeV
+	 * @return
+	 */
 	public ArrayList<Couple> calculerClassementG(String typeV) {
 		//HashMap<Coureur, Double> sumTemps = new HashMap<Coureur, Double>();
 		ArrayList<Couple> listSum = new ArrayList<Couple>();

@@ -26,6 +26,10 @@ public class SpecialTemps {
 	}
 
 
+	public String toString() {
+		return this.getKey()+" "+this.getValue();
+	}
+	
 	public boolean equals(Object o) {
 		if(o instanceof SpecialTemps) {
 			return ((SpecialTemps) o).getKey().equals(this.getKey());

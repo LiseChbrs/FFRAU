@@ -17,7 +17,6 @@ public class ClassementAnnuel {
 		this.listER.add(er);
 	}
 	
-	public void getClassementAnnuel(int annee) {
 		
 	public ArrayList<Couple> getClassementAnnuel(int annee, String typeV) {
 		ArrayList<Couple> listSum = new ArrayList<Couple>();
@@ -74,6 +73,7 @@ public class ClassementAnnuel {
 				}
 			}
 		}
+		return listSum;
 	}
 	
 	public void calculerClassementAnnuel(int annee) {
