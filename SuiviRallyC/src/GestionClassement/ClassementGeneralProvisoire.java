@@ -99,7 +99,7 @@ public class ClassementGeneralProvisoire {
 		for1:
 		for (int i = 0; i < classementC.size(); i++) {
 			Coureur c = classementC.get(i).getKey();
-			if (!result.containsKey(c.getConstructeur())) {
+			if (!result.containsKey(c.getConstructeur()) && c.getConstructeur() != null) {
 				result.put(c.getConstructeur(), 0);
 			}
 			switch (i) {
