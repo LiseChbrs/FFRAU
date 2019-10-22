@@ -2,6 +2,7 @@ package GestionRallye;
 
 import java.util.ArrayList;
 
+import GestionClassement.ClassementGeneralProvisoire;
 import GestionDonnees.Rallye;
 import GestionDonnees.TypeRegle;
 import GestionInscription.Coureur;
@@ -13,6 +14,8 @@ public class EditionRallye extends Rallye{
 	private int anneeER;
 	private ArrayList<Etape> etapes;
 	private ArrayList<Coureur> coureurs;
+	ClassementGeneralProvisoire cgp;
+	
 
 	/***
 	 * 
@@ -40,7 +43,7 @@ public class EditionRallye extends Rallye{
 	//METHODS 
 
 	/***
-	 * Ajoute une spéciale en ciblant l'étape.
+	 * Ajoute une spï¿½ciale en ciblant l'ï¿½tape.
 	 * @param e
 	 */
 	public void ajouterSpeciale(Etape etape,double distanceparcER, int ordre,double chronoLimite,TypeRegleSpecial type) {
@@ -48,7 +51,7 @@ public class EditionRallye extends Rallye{
 		//			this.getEtapes().get(etape).addSpeciale(new Speciale(distanceparcER,ordre,chronoLimite,type));
 		//		
 		//		}else {
-		//			System.out.println("L'étape n'existe pas. Veuillez la créer.");
+		//			System.out.println("L'ï¿½tape n'existe pas. Veuillez la crï¿½er.");
 		//		}
 		int i =0;
 		boolean found = false;
@@ -60,7 +63,7 @@ public class EditionRallye extends Rallye{
 			}
 			i++;
 		}
-		if(!found) System.out.println("L'étape n'existe pas.");
+		if(!found) System.out.println("L'ï¿½tape n'existe pas.");
 
 	}
 
@@ -125,7 +128,7 @@ public class EditionRallye extends Rallye{
 
 
 	/***
-	 * Egalité sur le nom du rallye, et le numéro d'édition de l'éditionRallye
+	 * Egalitï¿½ sur le nom du rallye, et le numï¿½ro d'ï¿½dition de l'ï¿½ditionRallye
 	 */
 	public boolean equals(Object o) {
 		if(o instanceof EditionRallye ) {

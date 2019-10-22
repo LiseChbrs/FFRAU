@@ -15,6 +15,7 @@ public class ClassementAnnuel {
 	}
 	
 	public void getClassementAnnuel(int annee) {
+		
 	}
 	
 	public void calculerClassementAnnuel(int annee) {
