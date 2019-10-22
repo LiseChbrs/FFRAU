@@ -158,7 +158,7 @@ public class ClassementGeneralProvisoire {
 
 
 	
-//>>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
+>>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
 
 	//METHODS
 	public ArrayList<ClassementEtape> getListClassementEtapes() {
