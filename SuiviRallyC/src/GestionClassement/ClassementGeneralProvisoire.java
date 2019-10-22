@@ -102,8 +102,7 @@ public class ClassementGeneralProvisoire {
 			if (!result.containsKey(c.getConstructeur()) && c.getConstructeur() != null) {
 				result.put(c.getConstructeur(), 0);
 			}
-		}
-		for( int i=0;i<result.size();i++) {
+			if (c.getConstructeur() != null) {
 			switch (i) {
 			case 0:
 				result.put(c.getConstructeur(), result.get(c.getConstructeur()) + 10);
@@ -130,6 +129,10 @@ public class ClassementGeneralProvisoire {
 				result.put(c.getConstructeur(), result.get(c.getConstructeur()) + 1);
 				break;
 			case 8:
+				break for1;
+				}
+			}
+			if (i>=8) {
 				break for1;
 			}
 		}
