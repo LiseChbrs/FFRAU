@@ -40,4 +40,7 @@ public class Constructeur {
 	}
 
 
+	public String toString() {
+		return this.nomConst;
+	}
 }

@@ -27,5 +27,8 @@ public class Couple {
 	}
 
 
+	public String toString() {
+		return this.key +" : "+this.value;
+	}
 
 }

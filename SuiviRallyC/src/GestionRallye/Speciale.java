@@ -64,5 +64,9 @@ public class Speciale {
 			return false;
 		}
 	}
+	
+	public String toString() {
+		return this.numOrdreS + " "+this.distanceParcS;
+	}
 
 }

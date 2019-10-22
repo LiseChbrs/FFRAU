@@ -73,7 +73,11 @@ public class Coureur {
 		return constructeur;
 	}
 
-	public void setConstructeur(Constructeur constructeur) {
+	/***
+	 * Si l'attribut n'est pas null, alors le coureur est associé à un constructeur.
+	 * @param constructeur
+	 */
+	public void associerConstructeur(Constructeur constructeur) {
 		this.constructeur = constructeur;
 	}
 
@@ -125,4 +129,7 @@ public class Coureur {
 		}
 	}
 
+	public String toString() {
+		return this.nomC +" "+ this.prenomC;
+	}
 }

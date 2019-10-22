@@ -28,15 +28,16 @@ public class EditionRallye extends Rallye{
 	 * @param anneeER
 	 */
 	public EditionRallye(String nomR, String villeR, String paysR, TypeRegle regle, String dateDebER, String dateFinER,
-			int nomER, int anneeER) {
+			int numER, int anneeER) {
 		super(nomR, villeR, paysR, regle);
 
 		this.dateDebER = dateDebER;
 		this.dateFinER = dateFinER;
-		this.numER = nomER;
+		this.numER = numER;
 		this.anneeER = anneeER;
 		this.setEtapes(new ArrayList<Etape>());
 		this.coureurs = new ArrayList<Coureur>();
+		this.classementRallye = new ArrayList<ClassementGeneralProvisoire>();
 	}
 
 	//METHODS 
@@ -129,6 +130,13 @@ public class EditionRallye extends Rallye{
 		this.etapes = etapes;
 	}
 
+	public ArrayList<Coureur> getCoureurs() {
+		return coureurs;
+	}
+
+	public ArrayList<ClassementGeneralProvisoire> getClassementRallye() {
+		return classementRallye;
+	}
 
 	/***
 	 * Egalité sur le nom du rallye, et le numéro d'édition de l'éditionRallye
@@ -149,4 +157,7 @@ public class EditionRallye extends Rallye{
 		}
 	}
 
+	public String toString() {
+		return ""+this.getNomR() +" "+this.getNumER()+" "+this.etapes.toString();
+	}
 }

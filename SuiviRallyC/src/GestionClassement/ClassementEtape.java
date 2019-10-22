@@ -24,7 +24,6 @@ public class ClassementEtape {
 		this.listTemps = new HashMap<Coureur, ArrayList<SpecialTemps>>();
 		this.etape = etape;
 		this.listRapport = new HashMap<Coureur, Rapport>();
-
 	}
 
 	public void enregistrerTemps(Coureur c, Speciale s, Double t) {
@@ -35,7 +34,6 @@ public class ClassementEtape {
 			spt.add(new SpecialTemps(s,t));
 			this.listTemps.put(c, spt);
 		}
-
 	}
 
 
@@ -80,21 +78,38 @@ public class ClassementEtape {
 		return classement;
 	}
 
-	public HashMap<Vehicule,ArrayList<Couple>> getClassementByVehicule(){
-		HashMap<Vehicule,ArrayList<Couple>> sorted = new HashMap<Vehicule, ArrayList<Couple>>();
+	/***
+	 * Retourne un hashmap de classements triés par type de véhicule.
+	 * Accessible par String : "Voiture","Moto","Camion".
+	 * @return
+	 */
+	public HashMap<String,ArrayList<Couple>> getClassementByVehicule(){
+		HashMap<String,ArrayList<Couple>> sorted = new HashMap<String, ArrayList<Couple>>();
 		ArrayList<Couple> r = this.calculerClassement();
-		ArrayList<Voiture> v = new ArrayList<>();
-		ArrayList<Moto> m = new ArrayList<>();
-		ArrayList<Camion> ca = new ArrayList<>();
-		
+		ArrayList<Couple> voitures = new ArrayList<>();
+		ArrayList<Couple> motos = new ArrayList<>();
+		ArrayList<Couple> camions = new ArrayList<>();
+
 		for(Couple c : r) {
 			if(c.getKey().getVehicule() instanceof Voiture) {
-				
+				voitures.add(c);
+			}else if(c.getKey().getVehicule() instanceof Camion) {
+				camions.add(c);
+			}else {
+				motos.add(c);
 			}
 		}
-		
+		Collections.sort(voitures, (c1,c2) -> c1.getValue().compareTo(c2.getValue()));
+		Collections.sort(camions, (c1,c2) -> c1.getValue().compareTo(c2.getValue()));
+		Collections.sort(motos, (c1,c2) -> c1.getValue().compareTo(c2.getValue()));
+
+		sorted.put("Voiture", voitures);
+		sorted.put("Moto",motos);
+		sorted.put("Camion",camions);
 		return sorted;
 	}
+
+
 
 	public HashMap<Coureur, ArrayList<SpecialTemps>> getListTemps() {
 		return listTemps;

@@ -16,11 +16,11 @@ public class Etape {
 
 
 
-	public Etape(Difficulte difficulte, int numEtape, int distanceParcE) {
+	public Etape(Difficulte difficulte, int numEtape, int distance) {
 		super();
 		this.difficulte = difficulte;
 		this.numEtape = numEtape;
-		this.distanceParcE = distanceParcE;
+		this.distanceParcE = distance;
 		this.speciales = new ArrayList<Speciale>();
 	}
 
@@ -79,14 +79,18 @@ public class Etape {
 	public void setNumEtape(int numEtape) {
 		this.numEtape = numEtape;
 	}
+	
 	public int getDistanceParcE() {
+//		for(Speciale s : this.speciales) {
+//			this.distanceParcE += s.getDistanceParcS();
+//		}
 		return distanceParcE;
 	}
 	public void setDistanceParcE(int distanceParcE) {
 		this.distanceParcE = distanceParcE;
 	}
 	public double getCoeffDiff() {
-		return coeffDiff;
+		return this.calculerCoefDiff();
 	}
 	public void setCoeffDiff(double coeffDiff) {
 		this.coeffDiff = coeffDiff;
@@ -111,4 +115,7 @@ public class Etape {
 		}
 	}
 
+	public String toString() {
+		return this.numEtape+" "+this.speciales.toString();
+	}
 }

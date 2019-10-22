@@ -14,7 +14,7 @@ import GestionInscription.Coureur;
 
 
 public class ClassementGeneralProvisoire {
-	ArrayList<ClassementEtape> listClassementEtapes;
+	private ArrayList<ClassementEtape> listClassementEtapes;
 	
 	public ClassementGeneralProvisoire() {
 		this.listClassementEtapes = new ArrayList<ClassementEtape>();
@@ -107,6 +107,12 @@ public class ClassementGeneralProvisoire {
 		
 		return sorted;
 	}
+
+
 	
 
+	//METHODS
+	public ArrayList<ClassementEtape> getListClassementEtapes() {
+		return listClassementEtapes;
+	}
 }
