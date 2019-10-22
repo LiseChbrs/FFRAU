@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 import GestionClassement.ClassementEtape;
 import GestionDonnees.Difficulte;
+import GestionDonnees.Etat;
 
 public class Etape {
 	private Difficulte difficulte;
 	ArrayList<Speciale> speciales;
 	private int numEtape;
+	private Etat etat;
 	private int distanceParcE;
 	private double coeffDiff;
 	private ClassementEtape classement;
@@ -23,6 +25,7 @@ public class Etape {
 		this.distanceParcE = distanceParcE;
 		this.coeffDiff = calculerCoefDiff();
 		this.speciales = new ArrayList<Speciale>();
+		this.etat = Etat.debute;
 	}
 
 	//METHODS
@@ -103,7 +106,16 @@ public class Etape {
 		this.speciales = speciales;
 	}
 
+	
 
+	
+	public Etat getEtat() {
+		return etat;
+	}
+
+	public void setEtat(Etat etat) {
+		this.etat = etat;
+	}
 
 	/***
 	 * Deux etapes sont similaires lorsqu'elle ont le même numéro d'ordre.

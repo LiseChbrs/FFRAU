@@ -6,6 +6,9 @@ import GestionRallye.EditionRallye;
 
 public class ClassementAnnuel {
 	ArrayList<EditionRallye> listER;
+	
+	
+	
 	public ClassementAnnuel() {
 		this.listER = new ArrayList<EditionRallye>();
 	}
@@ -15,7 +18,9 @@ public class ClassementAnnuel {
 	}
 	
 	public void getClassementAnnuel(int annee) {
-		
+		for(EditionRallye e : this.listER) {
+			e.getClassementRallye();
+		}
 	}
 	
 	public void calculerClassementAnnuel(int annee) {

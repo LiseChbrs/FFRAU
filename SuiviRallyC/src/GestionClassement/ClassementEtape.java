@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import GestionDonnees.Etat;
 import GestionInscription.Camion;
 import GestionInscription.Coureur;
 import GestionInscription.Voiture;
@@ -48,6 +49,7 @@ public class ClassementEtape {
 
 
 	public ArrayList<Couple> calculerClassement() {
+		this.etape.setEtat(Etat.clos);
 		ArrayList<Couple> classement = new ArrayList<Couple>();
 		for(Entry<Coureur, ArrayList<SpecialTemps> > e : this.listTemps.entrySet()) {
 			double somme =0;

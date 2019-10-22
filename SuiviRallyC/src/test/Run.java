@@ -85,6 +85,9 @@ public class Run {
 		er1_1.addCoureur(c1);
 		er1_1.addCoureur(c4);
 		er1_1.addCoureur(c5);
+		
+		//FERMER AUX INSCRIPTIONS
+		er1_1.fermerInscription();
 
 		ClassementEtape ce = new ClassementEtape(et1) ;
 

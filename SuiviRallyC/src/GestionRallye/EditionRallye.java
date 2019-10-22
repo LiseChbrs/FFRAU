@@ -3,6 +3,8 @@ package GestionRallye;
 import java.util.ArrayList;
 
 import GestionClassement.ClassementGeneralProvisoire;
+import GestionClassement.Couple;
+import GestionDonnees.Etat;
 import GestionDonnees.Rallye;
 import GestionDonnees.TypeRegle;
 import GestionInscription.Coureur;
@@ -10,6 +12,7 @@ import GestionInscription.Coureur;
 public class EditionRallye extends Rallye{
 	private String dateDebER;
 	private String dateFinER;
+	private Etat etat;
 	private int numER;
 	private int anneeER;
 	private ArrayList<Etape> etapes;
@@ -38,6 +41,7 @@ public class EditionRallye extends Rallye{
 		this.setEtapes(new ArrayList<Etape>());
 		this.coureurs = new ArrayList<Coureur>();
 		this.classementRallye = new ArrayList<ClassementGeneralProvisoire>();
+		this.etat = Etat.ouvertAuxInscriptions;
 	}
 
 	//METHODS 
@@ -127,6 +131,10 @@ public class EditionRallye extends Rallye{
 	}
 
 
+	public void fermerInscription() {
+		this.etat = Etat.debute;
+	}
+	
 	/***
 	 * Egalitï¿½ sur le nom du rallye, et le numï¿½ro d'ï¿½dition de l'ï¿½ditionRallye
 	 */
@@ -156,6 +164,32 @@ public class EditionRallye extends Rallye{
 
 	public ArrayList<ClassementGeneralProvisoire> getClassementRallye() {
 		return classementRallye;
+	}
+
+	/***
+	 * Retourne le dernier classementProvisoire et met l'état de l'édition ) clos.
+	 * @return
+	 */
+	public ClassementGeneralProvisoire calculerClassementDefinitif(){
+		this.etat = Etat.clos;
+		int index = this.getClassementRallye().size() -1;
+		return this.getClassementRallye().get(index);
+	}
+
+	public Etat getEtat() {
+		return etat;
+	}
+
+	public void setEtat(Etat etat) {
+		this.etat = etat;
+	}
+
+	public void setCoureurs(ArrayList<Coureur> coureurs) {
+		this.coureurs = coureurs;
+	}
+
+	public void setClassementRallye(ArrayList<ClassementGeneralProvisoire> classementRallye) {
+		this.classementRallye = classementRallye;
 	}
 
 	
