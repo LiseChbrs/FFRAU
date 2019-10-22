@@ -21,13 +21,36 @@ public class Etape {
 		this.difficulte = difficulte;
 		this.numEtape = numEtape;
 		this.distanceParcE = distanceParcE;
-		//this.coeffDiff = coeffDiff;
 		this.speciales = new ArrayList<Speciale>();
 	}
 
 	//METHODS
 	public void addSpeciale(Speciale s) {
 		this.speciales.add(s);
+	}
+
+	private double calculerCoefDiff() {
+		double coef =0.0;
+
+		switch(this.difficulte) {
+		case sans_difficulte_particuliere :
+			coef = 1;
+			break;
+		case difficulte_mineures :
+			coef = 0.9;
+			break;
+		case difficulte_moyenne :
+			coef = 0.8;
+			break;
+		case difficile : 
+			coef = 0.7;
+			break;
+		case tres_difficile :
+			coef = 0.6;
+			break;
+
+		}
+		return coef;
 	}
 
 	//GETTERS & SETTERS

@@ -2,6 +2,7 @@ package GestionRallye;
 
 import java.util.ArrayList;
 
+import GestionClassement.ClassementGeneralProvisoire;
 import GestionDonnees.Rallye;
 import GestionDonnees.TypeRegle;
 import GestionInscription.Coureur;
@@ -13,6 +14,7 @@ public class EditionRallye extends Rallye{
 	private int anneeER;
 	private ArrayList<Etape> etapes;
 	private ArrayList<Coureur> coureurs;
+	private ArrayList<ClassementGeneralProvisoire> classementRallye;
 
 	/***
 	 * 
@@ -70,6 +72,10 @@ public class EditionRallye extends Rallye{
 
 	public void addCoureur(Coureur c) {
 		this.coureurs.add(c);
+	}
+
+	public void addClassementGeneralProvisoire(ClassementGeneralProvisoire cgp) {
+		this.classementRallye.add(cgp);
 	}
 
 	//GETTERS&SETTERS

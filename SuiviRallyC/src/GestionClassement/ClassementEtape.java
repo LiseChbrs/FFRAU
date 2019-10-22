@@ -1,15 +1,16 @@
 package GestionClassement;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import java.util.Collection;
 import java.util.Collections;
->>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import GestionInscription.Camion;
 import GestionInscription.Coureur;
+import GestionInscription.Moto;
+import GestionInscription.Vehicule;
+import GestionInscription.Voiture;
 import GestionRallye.Etape;
 import GestionRallye.Speciale;;
 
@@ -44,14 +45,11 @@ public class ClassementEtape {
 
 
 
-	public void calculerTempsCoef() {
-
+	public double calculerTempsCoef(double temps) {
+		double coeff = this.etape.getCoeffDiff();
+		return temps * coeff;
 	}
-<<<<<<< HEAD
-	
-	public ArrayList<Couple> calculerClassement() {
-		return null;
-=======
+
 
 	public ArrayList<Couple> calculerClassement() {
 		ArrayList<Couple> classement = new ArrayList<Couple>();
@@ -63,25 +61,40 @@ public class ClassementEtape {
 			//ON AFFECTE LE TEMPS SELON LE RAPPORT
 			if(this.listRapport.containsKey(e.getKey())) {
 				Rapport r = this.listRapport.get(e);
+				//Si on a une élimination on le retire de la liste.
 				if(r.getelimine()) {
 					this.listTemps.remove(e);
-					//					somme = 0;
-					//					for(Speciale s:this.etape.getSpeciales()) {
-					//						somme += s.getChronoLimiteS();
-					//					}
 				}else {
+					//Sinon on lui impute une éventuelle pénalité/Bonus(selon le signe).
 					somme += r.getPenalite();
 				}
 
 			}
+			//On insère dans le classement.
+			//Permet d'avoir le temps minoré selon le coefficient.
+			somme = this.calculerTempsCoef(somme);
 			classement.add(new Couple(e.getKey(),somme));
 		}
+		//Il faut ensuite trier le classement.
 		Collections.sort(classement, (c1,c2) -> c1.getValue().compareTo(c2.getValue()));
 		return classement;
->>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
 	}
 
-
+	public HashMap<Vehicule,ArrayList<Couple>> getClassementByVehicule(){
+		HashMap<Vehicule,ArrayList<Couple>> sorted = new HashMap<Vehicule, ArrayList<Couple>>();
+		ArrayList<Couple> r = this.calculerClassement();
+		ArrayList<Voiture> v = new ArrayList<>();
+		ArrayList<Moto> m = new ArrayList<>();
+		ArrayList<Camion> ca = new ArrayList<>();
+		
+		for(Couple c : r) {
+			if(c.getKey().getVehicule() instanceof Voiture) {
+				
+			}
+		}
+		
+		return sorted;
+	}
 
 	public HashMap<Coureur, ArrayList<SpecialTemps>> getListTemps() {
 		return listTemps;
