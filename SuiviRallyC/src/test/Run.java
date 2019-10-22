@@ -173,7 +173,7 @@ public class Run {
 		for(Coureur c : er1_1.getCoureurs()) {
 			System.out.println(c.toString() +" "+ c.getConstructeur());
 		}
-
+//BONJOUR BONJOUUUUUR
 
 	}
 
