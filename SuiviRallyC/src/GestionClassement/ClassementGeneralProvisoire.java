@@ -15,7 +15,7 @@ import GestionInscription.*;
 
 
 public class ClassementGeneralProvisoire {
-	ArrayList<ClassementEtape> listClassementEtapes;
+	private ArrayList<ClassementEtape> listClassementEtapes;
 	
 	public ClassementGeneralProvisoire() {
 		this.listClassementEtapes = new ArrayList<ClassementEtape>();
@@ -153,5 +153,15 @@ public class ClassementGeneralProvisoire {
         */
 		return sorted;
 	}
+<<<<<<< HEAD
+=======
 
+
+	
+>>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
+
+	//METHODS
+	public ArrayList<ClassementEtape> getListClassementEtapes() {
+		return listClassementEtapes;
+	}
 }

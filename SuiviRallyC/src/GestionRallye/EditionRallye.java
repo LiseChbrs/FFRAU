@@ -13,9 +13,8 @@ public class EditionRallye extends Rallye{
 	private int numER;
 	private int anneeER;
 	private ArrayList<Etape> etapes;
-	private ArrayList<Coureur> coureurs;
-	ClassementGeneralProvisoire cgp;
-	
+	private ArrayList<Coureur> coureurs;	
+	private ArrayList<ClassementGeneralProvisoire> classementRallye;
 
 	/***
 	 * 

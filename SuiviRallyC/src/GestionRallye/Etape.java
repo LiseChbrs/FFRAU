@@ -21,13 +21,37 @@ public class Etape {
 		this.difficulte = difficulte;
 		this.numEtape = numEtape;
 		this.distanceParcE = distanceParcE;
-		//this.coeffDiff = coeffDiff;
+		this.coeffDiff = calculerCoefDiff();
 		this.speciales = new ArrayList<Speciale>();
 	}
 
 	//METHODS
 	public void addSpeciale(Speciale s) {
 		this.speciales.add(s);
+	}
+
+	private double calculerCoefDiff() {
+		double coef =0.0;
+
+		switch(this.difficulte) {
+		case sans_difficulte_particuliere :
+			coef = 1;
+			break;
+		case difficulte_mineures :
+			coef = 0.9;
+			break;
+		case difficulte_moyenne :
+			coef = 0.8;
+			break;
+		case difficile : 
+			coef = 0.7;
+			break;
+		case tres_difficile :
+			coef = 0.6;
+			break;
+
+		}
+		return coef;
 	}
 
 	//GETTERS & SETTERS
@@ -56,14 +80,18 @@ public class Etape {
 	public void setNumEtape(int numEtape) {
 		this.numEtape = numEtape;
 	}
+	
 	public int getDistanceParcE() {
+//		for(Speciale s : this.speciales) {
+//			this.distanceParcE += s.getDistanceParcS();
+//		}
 		return distanceParcE;
 	}
 	public void setDistanceParcE(int distanceParcE) {
 		this.distanceParcE = distanceParcE;
 	}
 	public double getCoeffDiff() {
-		return coeffDiff;
+		return this.calculerCoefDiff();
 	}
 	public void setCoeffDiff(double coeffDiff) {
 		this.coeffDiff = coeffDiff;
@@ -88,4 +116,7 @@ public class Etape {
 		}
 	}
 
+	public String toString() {
+		return this.numEtape+" "+this.speciales.toString();
+	}
 }
