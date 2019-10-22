@@ -11,6 +11,7 @@ import static java.util.stream.Collectors.*;
 import static java.util.Map.Entry.*;
 import GestionInscription.Constructeur;
 import GestionInscription.Coureur;
+import GestionInscription.*;
 
 
 public class ClassementGeneralProvisoire {
@@ -24,12 +25,13 @@ public class ClassementGeneralProvisoire {
 		this.listClassementEtapes.add(ce);
 	}
 	
-	public ArrayList<Couple> calculerClassementG() {
+	public ArrayList<Couple> calculerClassementG(String typeV) {
 		//HashMap<Coureur, Double> sumTemps = new HashMap<Coureur, Double>();
 		ArrayList<Couple> listSum = new ArrayList<Couple>();
 		for (ClassementEtape ce : listClassementEtapes) {
 			ArrayList<Couple> classNow= new ArrayList<Couple>();
 			classNow = ce.calculerClassement();
+			
 			for (Couple cp : classNow) {
 				boolean isExist = false;
 				for (Couple ls : listSum) {
@@ -44,6 +46,39 @@ public class ClassementGeneralProvisoire {
 				}
 			}
 		}
+		//All Coureur with their TempsSUM have been added in the listSum.
+		
+		
+		switch (typeV) {
+		case "Moto":
+			for (int i = 0; i < listSum.size(); i++) {
+				if (!(listSum.get(i).getKey().getVehicule() instanceof Moto)) {
+					listSum.remove(i);
+					i--;
+				}
+			}
+			
+			break;
+		case "Camion":
+			for (int i = 0; i < listSum.size(); i++) {
+				if (!(listSum.get(i).getKey().getVehicule() instanceof Camion)) {
+					listSum.remove(i);
+					i--;
+				}
+			}
+			break;
+		case "Voiture":
+			for (int i = 0; i < listSum.size(); i++) {
+				if (!(listSum.get(i).getKey().getVehicule() instanceof Voiture)) {
+					listSum.remove(i);
+					i--;
+				}
+			}
+			break;
+		default:
+			break;
+		}
+
 		
 		for (int i = 0; i < listSum.size(); i++) {
 			for (int j = 0; j < listSum.size() - 1 - i; j++) {
@@ -59,7 +94,7 @@ public class ClassementGeneralProvisoire {
 	
 	
 	public HashMap<Constructeur, Integer> calculerClassementCons() {
-		ArrayList<Couple> classementC = this.calculerClassementG();
+		ArrayList<Couple> classementC = this.calculerClassementG("default");
 		HashMap<Constructeur, Integer> result = new HashMap<Constructeur, Integer>();
 		for1:
 		for (int i = 0; i < classementC.size(); i++) {
@@ -97,6 +132,7 @@ public class ClassementGeneralProvisoire {
 				break for1;
 			}
 		}
+		
 	    HashMap<Constructeur, Integer> sorted = result
 	            .entrySet()
 	            .stream()
@@ -104,7 +140,17 @@ public class ClassementGeneralProvisoire {
 	            .collect(
 	                toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
 	                    LinkedHashMap::new));
-		
+		/*
+        List<Map.Entry<	,Integer>> list = new ArrayList<Map.Entry<Constructeur,Integer>>(result.entrySet());
+        Collections.sort(list,new Comparator<Map.Entry<Constructeur,Integer>>() {
+            
+            public int compare(Entry<Constructeur, Integer> o1,
+                    Entry<Constructeur, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+            
+        });
+        */
 		return sorted;
 	}
 

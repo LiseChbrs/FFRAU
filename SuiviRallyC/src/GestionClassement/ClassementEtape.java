@@ -1,16 +1,15 @@
 package GestionClassement;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
 import java.util.Collection;
 import java.util.Collections;
+>>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import GestionInscription.Camion;
 import GestionInscription.Coureur;
-import GestionInscription.Moto;
-import GestionInscription.Vehicule;
-import GestionInscription.Voiture;
 import GestionRallye.Etape;
 import GestionRallye.Speciale;;
 
@@ -76,6 +75,7 @@ public class ClassementEtape {
 		//Il faut ensuite trier le classement.
 		Collections.sort(classement, (c1,c2) -> c1.getValue().compareTo(c2.getValue()));
 		return classement;
+>>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
 	}
 
 	/***
@@ -110,7 +110,7 @@ public class ClassementEtape {
 	}
 
 
-
+	
 	public HashMap<Coureur, ArrayList<SpecialTemps>> getListTemps() {
 		return listTemps;
 	}

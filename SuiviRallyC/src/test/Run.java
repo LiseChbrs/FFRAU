@@ -167,7 +167,9 @@ public class Run {
 
 		System.out.println(cgp.getListClassementEtapes().get(1).calculerClassement());
 		er1_1.addClassementGeneralProvisoire(cgp);
-		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG());
+		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Voiture"));
+		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Moto"));
+		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Camion"));
 		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementCons());
 		
 		for(Coureur c : er1_1.getCoureurs()) {

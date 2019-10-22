@@ -16,11 +16,12 @@ public class Etape {
 
 
 
-	public Etape(Difficulte difficulte, int numEtape, int distance) {
+	public Etape(Difficulte difficulte, int numEtape, int distanceParcE) {
 		super();
 		this.difficulte = difficulte;
 		this.numEtape = numEtape;
-		this.distanceParcE = distance;
+		this.distanceParcE = distanceParcE;
+		this.coeffDiff = calculerCoefDiff();
 		this.speciales = new ArrayList<Speciale>();
 	}
 

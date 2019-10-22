@@ -75,10 +75,6 @@ public class EditionRallye extends Rallye{
 		this.coureurs.add(c);
 	}
 
-	public void addClassementGeneralProvisoire(ClassementGeneralProvisoire cgp) {
-		this.classementRallye.add(cgp);
-	}
-
 	//GETTERS&SETTERS
 
 	public String getDateDebER() {
@@ -159,5 +155,9 @@ public class EditionRallye extends Rallye{
 
 	public String toString() {
 		return ""+this.getNomR() +" "+this.getNumER()+" "+this.etapes.toString();
+	}
+
+	public void addClassementGeneralProvisoire(ClassementGeneralProvisoire cgp) {
+		this.classementRallye.add(cgp);
 	}
 }
