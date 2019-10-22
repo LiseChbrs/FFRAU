@@ -209,5 +209,10 @@ public class EditionRallye extends Rallye{
 		return this.getNomR()+" n°: "+this.numER;
 	}
 
+	public ArrayList<ClassementGeneralProvisoire> getClassementGeneralProvisoires() {
+		// TODO Auto-generated method stub
+		return this.classementRallye;
+	}
+
 
 }
