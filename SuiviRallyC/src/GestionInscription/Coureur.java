@@ -2,8 +2,11 @@ package GestionInscription;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import GestionClassement.ClassementEtape;
+import GestionClassement.ClassementGeneralProvisoire;
+import GestionClassement.Couple;
 import GestionRallye.EditionRallye;
 import GestionRallye.Etape;
 
@@ -35,15 +38,52 @@ public class Coureur {
 	}
 
 	//METHODS
-	public HashMap<Etape, Integer> getHistoriqueCoureur() {
+	public HashMap<EditionRallye, Integer> getHistoriqueCoureur() {
+		HashMap<EditionRallye,Integer> historique = new HashMap<EditionRallye, Integer>();
 
-		return null;
+		for(EditionRallye r : this.participations) {
+			if(r.getCoureurs().contains(this)){
+				ClassementGeneralProvisoire cgp = r.calculerClassementDefinitif();
+				HashMap<Integer,ArrayList<Couple>> halo = new HashMap<>();
+				halo.put(1,cgp.calculerClassementG("Voiture"));
+				halo.put(2,cgp.calculerClassementG("Moto"));
+				halo.put(3,cgp.calculerClassementG("Camion"));
+
+				boolean verification = false;
+
+				//ON CHERCHE A VOIR OU SE SITUE NOTRE COUREUR
+				int indice = 0;
+				for(Entry<Integer, ArrayList<Couple>> e : halo.entrySet()) {
+					if(e.getValue().contains(this)) {
+						indice = e.getKey();
+						verification = true;
+						break;
+					}
+				}
+
+				if(verification) {
+					int i =0;
+					for(Couple c : halo.get(indice)) {
+						if(c.getKey().equals(this)) {
+							historique.put(r, i);
+							break;
+						}
+						i++;
+					}
+				}
+			}
+		}
+		return historique;
 	}
 
 	public double calculerTempsCoefCorrectif(double temps) {
 		return temps*this.vehicule.calculerCoeffCorrectif();
 	}
-
+	
+	
+	public void inscrire(EditionRallye r) {
+		this.participations.add(r);
+	}
 
 	//GETTERS & SETTERS
 	public void addEdition(EditionRallye e) {

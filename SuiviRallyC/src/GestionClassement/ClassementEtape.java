@@ -26,12 +26,16 @@ public class ClassementEtape {
 	}
 
 	public void enregistrerTemps(Coureur c, Speciale s, Double t) {
-		if(this.listTemps.containsKey(c)) {
-			this.listTemps.get(c).add(new SpecialTemps(s,t));
+		if(this.etape.getEtat().equals(Etat.debute)) {
+			if(this.listTemps.containsKey(c)) {
+				this.listTemps.get(c).add(new SpecialTemps(s,t));
+			}else {
+				ArrayList<SpecialTemps> spt = new ArrayList<SpecialTemps>();
+				spt.add(new SpecialTemps(s,t));
+				this.listTemps.put(c, spt);
+			}
 		}else {
-			ArrayList<SpecialTemps> spt = new ArrayList<SpecialTemps>();
-			spt.add(new SpecialTemps(s,t));
-			this.listTemps.put(c, spt);
+			System.out.println("ETAPE CLOSE.");
 		}
 	}
 
@@ -110,7 +114,7 @@ public class ClassementEtape {
 	}
 
 
-	
+
 	public HashMap<Coureur, ArrayList<SpecialTemps>> getListTemps() {
 		return listTemps;
 	}

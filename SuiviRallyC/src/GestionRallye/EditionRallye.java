@@ -76,6 +76,7 @@ public class EditionRallye extends Rallye{
 	}
 
 	public void addCoureur(Coureur c) {
+		c.inscrire(this);
 		this.coureurs.add(c);
 	}
 
@@ -134,7 +135,7 @@ public class EditionRallye extends Rallye{
 	public void fermerInscription() {
 		this.etat = Etat.debute;
 	}
-	
+
 	/***
 	 * Egalitï¿½ sur le nom du rallye, et le numï¿½ro d'ï¿½dition de l'ï¿½ditionRallye
 	 */
@@ -155,7 +156,11 @@ public class EditionRallye extends Rallye{
 	}
 
 	public void addClassementGeneralProvisoire(ClassementGeneralProvisoire cgp) {
-		this.classementRallye.add(cgp);
+		if(this.etat.equals(Etat.clos)) {
+			System.out.println("L'édition rallye est close, vous ne pouvez plus rajouter de classement.");
+		}else {
+			this.classementRallye.add(cgp);
+		}
 	}
 
 	public ArrayList<Coureur> getCoureurs() {
@@ -192,5 +197,5 @@ public class EditionRallye extends Rallye{
 		this.classementRallye = classementRallye;
 	}
 
-	
+
 }

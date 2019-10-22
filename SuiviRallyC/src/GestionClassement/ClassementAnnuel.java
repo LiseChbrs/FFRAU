@@ -18,9 +18,7 @@ public class ClassementAnnuel {
 	}
 	
 	public void getClassementAnnuel(int annee) {
-		for(EditionRallye e : this.listER) {
-			e.getClassementRallye();
-		}
+		
 	}
 	
 	public void calculerClassementAnnuel(int annee) {

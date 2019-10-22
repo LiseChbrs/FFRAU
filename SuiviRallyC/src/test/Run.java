@@ -172,17 +172,22 @@ public class Run {
 		cgp.addClassementEtape(ce2);
 
 		System.out.println(cgp.getListClassementEtapes().get(1).calculerClassement());
-		er1_1.addClassementGeneralProvisoire(cgp);
+		
 		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Voiture"));
 		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Moto"));
 		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementG("Camion"));
 		System.out.println(er1_1.getClassementRallye().get(0).calculerClassementCons());
 		
+		er1_1.addClassementGeneralProvisoire(cgp);
+		
 		for(Coureur c : er1_1.getCoureurs()) {
 			System.out.println(c.toString() +" "+ c.getConstructeur());
 		}
-//BONJOUR BONJOUUUUUR
 
+		
+		for(Coureur x : er1_1.getCoureurs()) {
+			System.out.println(x.getHistoriqueCoureur());
+		}
 	}
 
 }

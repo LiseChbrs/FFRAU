@@ -92,7 +92,10 @@ public class ClassementGeneralProvisoire {
 		return listSum;
 	}
 	
-	
+	/***
+	 * Sors le classement par constructeur (Si les coureurs sont affiliés à un constructeur).
+	 * @return
+	 */
 	public HashMap<Constructeur, Integer> calculerClassementCons() {
 		ArrayList<Couple> classementC = this.calculerClassementG("default");
 		HashMap<Constructeur, Integer> result = new HashMap<Constructeur, Integer>();
