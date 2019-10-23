@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ListResourceBundle;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -30,14 +31,33 @@ import GestionRallye.Speciale;
 
 public class EnregistrementCoureurSpeciale extends JFrame implements ActionListener{
 
-	private Box vBox ;
+	private Box vBox,hbox ;
 	private JComboBox liste1,liste2,liste3;
 	private JTextField txtTemps;
 	private EditionRallye er;
+	private JButton btnEnr,btnReturn;
 
-	public EnregistrementCoureurSpeciale(EditionRallye er) {
+
+	public EnregistrementCoureurSpeciale(EditionRallye er,ArrayList<Rallye> listRallye, ArrayList<EditionRallye> listERallye,ArrayList<Etape> listEtape,ArrayList<Constructeur> listCons) {
 		this.er = er;
 		this.init();
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Fmenu frame = new Fmenu(listRallye,listERallye,listEtape,er,listCons);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+
+		hbox.add(btnEnr);
+		hbox.add(btnReturn);
+		vBox.add(txtTemps);
+		vBox.add(hbox);
+		this.add(vBox);
 	}
 
 	@Override
@@ -119,27 +139,15 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 		txtTemps = new JTextField("Entrez un temps");
 		txtTemps.setSize(this.getWidth(), 10);
 
-		Box hbox = Box.createHorizontalBox();
-		JButton btnEnr = new JButton("Valider Temps");
+		this.hbox = Box.createHorizontalBox();
+		btnEnr = new JButton("Valider Temps");
 		btnEnr.addActionListener(this);
-		JButton btnReturn = new JButton("Menu");
-		btnReturn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ArrayList<Rallye> listRallye = new ArrayList<Rallye>();
-				listRallye.add(new Rallye("France", "Toulouse", "France", TypeRegle.rallye));
-				ArrayList<EditionRallye> listERallye = new ArrayList<EditionRallye>();
-				ArrayList<Etape> listEtape = new ArrayList<Etape>();
-				ArrayList<Constructeur> listCons = new ArrayList<Constructeur>();
-				Fmenu menu = new Fmenu(listRallye, listERallye, listEtape, er,listCons);
-				menu.setVisible(true);
+		btnReturn = new JButton("Menu");
 
-			}
-		});
-		hbox.add(btnEnr);
-		hbox.add(btnReturn);
-		vBox.add(txtTemps);
-		vBox.add(hbox);
-		this.add(vBox);
 	}
+
+	public void menu(ActionEvent e) {
+		this.setVisible(false);
+	}
+
 }

@@ -75,6 +75,10 @@ public class EditionRallye extends Rallye{
 		this.etapes.add(e);
 	}
 
+	/***
+	 * ATTENTION : Il inscrit aussi le coureur(pas la peine de faire c.inscrire(EditionRallye r)
+	 * @param c
+	 */
 	public void addCoureur(Coureur c) {
 		c.inscrire(this);
 		this.coureurs.add(c);

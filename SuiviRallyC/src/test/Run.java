@@ -23,7 +23,6 @@ public class Run {
 		ArrayList<Etape> listEtape = new ArrayList<Etape>();
 
 
-
 		Constructeur cons1 = new Constructeur("Mercedes");
 		Constructeur cons2 = new Constructeur("Peugeot");
 		Constructeur cons3 = new Constructeur("Volkswagen");
@@ -320,17 +319,11 @@ public class Run {
 		listRallye.add(r1);
 		listRallye.add(r2);
 		listRallye.add(r3);
-<<<<<<< HEAD
-=======
 		
 		listERallye.add(er1_1);
 		
 		
-		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er1_1, listCons);
-		frame.setVisible(true);
->>>>>>> branch 'master' of https://github.com/LiseChbrs/FFRAU.git
-
-		listERallye.add(er1_1);
+		
 
 		/************************
 		 * JEU DE DONNEES PROPRE*
@@ -355,8 +348,11 @@ public class Run {
 		/*************
 		 * INTERFACES*
 		 *************/
-		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er3_2);
+		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er3_2, listCons);
 		frame.setVisible(true);
+
+		listERallye.add(er1_1);
+		
 		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er3_2);
 	}
 
