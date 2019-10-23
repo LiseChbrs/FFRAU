@@ -64,7 +64,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 	}
 
 	public void init() {
-		this.setTitle("Temps � l'�dition :"+er.getNomR()+" "+er.getNumER());
+		this.setTitle("Temps edition :"+er.getNomR()+" "+er.getNumER());
 		vBox = Box.createVerticalBox();
 		Object[] elements = new Object[er.getEtapes().size()];
 		int i =0;
@@ -72,7 +72,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 			elements[i] = e;
 			i++;
 		}
-		JLabel lblEtape = new JLabel("S�lectionnez une �tape");
+		JLabel lblEtape = new JLabel("Selectionnez une etape");
 		liste1 = new JComboBox(elements);
 		ClassementEtape ce;
 
@@ -90,7 +90,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 			i++;
 		}
 		liste2 = new JComboBox(elements);
-		JLabel lblSpeciale = new JLabel("S�lectionnez une sp�ciale");
+		JLabel lblSpeciale = new JLabel("Selectionnez une speciale");
 		vBox.add(lblSpeciale);
 		vBox.add(liste2);
 		elements = new Object[er.getCoureurs().size()];
@@ -133,6 +133,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 
 				Fmenu menu = new Fmenu(listRallye, listERallye, listEtape, er);
 				menu.setVisible(true);
+
 			}
 		});
 		hbox.add(btnEnr);
