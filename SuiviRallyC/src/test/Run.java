@@ -27,7 +27,11 @@ public class Run {
 		Constructeur cons1 = new Constructeur("Mercedes");
 		Constructeur cons2 = new Constructeur("Peugeot");
 		Constructeur cons3 = new Constructeur("Volkswagen");
-
+		ArrayList<Constructeur> listCons = new ArrayList<Constructeur>();
+		listCons.add(cons1);
+		listCons.add(cons2);
+		listCons.add(cons3);
+		
 		Vehicule v1 = new Camion("TWN PKS", 300, cons1);
 		Vehicule v2 = new Moto("PRK SN RC", 100, cons3);
 		Vehicule v3 = new Voiture("THFFC", 150, cons2);
@@ -319,7 +323,7 @@ public class Run {
 		listERallye.add(er1_1);
 		
 		
-		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er1_1);
+		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er1_1, listCons);
 		frame.setVisible(true);
 
 		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er1_1);
