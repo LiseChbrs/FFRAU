@@ -64,13 +64,13 @@ public class Run {
 		EditionRallye er3_1 = new EditionRallye(r3.getNomR(), r3.getVilleR(), r3.getPaysR(), r3.getRegle(), "08-06-16", "17-06-16", 2, 2016);
 
 		//utilit� du num�ro d'�tape dans le constructeur ?? On peut juste se servir de la position de l'�tape dans l'arraylist
-		Etape et1 = new Etape(Difficulte.difficile, 1, 28);
-		Etape et2 = new Etape(Difficulte.difficulte_moyenne, 2, 20);
-		Etape et3 = new Etape(Difficulte.sans_difficulte_particuliere, 3, 18);
+		Etape et1 = new Etape(Difficulte.difficile, 1, 28,er1_1);
+		Etape et2 = new Etape(Difficulte.difficulte_moyenne, 2, 20,er1_1);
+		Etape et3 = new Etape(Difficulte.sans_difficulte_particuliere, 3, 18,er1_1);
 
-		Etape et4 = new Etape(Difficulte.tres_difficile, 1, 14);
-		Etape et5 = new Etape(Difficulte.difficulte_mineures, 2, 19);
-		Etape et6 = new Etape(Difficulte.difficulte_moyenne, 3, 22);
+		Etape et4 = new Etape(Difficulte.tres_difficile, 1, 14,er3_1);
+		Etape et5 = new Etape(Difficulte.difficulte_mineures, 2, 19,er3_1);
+		Etape et6 = new Etape(Difficulte.difficulte_moyenne, 3, 22,er3_1);
 
 		//faut il v�rifier que la somme des distanceparc des sp�ciale est �gale � la distance de son �tape ? 
 		Speciale s1 = new Speciale(9.5, 1, 11.5, TypeRegleSpecial.speciale);
@@ -201,7 +201,7 @@ public class Run {
 		 * Classements*
 		 **************/
 		//ClassementG�n�ralRallye
-		ClassementGeneralProvisoire cgp = new ClassementGeneralProvisoire();
+		ClassementGeneralProvisoire cgp = new ClassementGeneralProvisoire(er3_1);
 		cgp.addClassementEtape(ce);
 		cgp.addClassementEtape(ceet2);
 		cgp.addClassementEtape(ceet3);
@@ -262,7 +262,7 @@ public class Run {
 			place ++;
 		}
 
-		ClassementGeneralProvisoire cgp3 = new ClassementGeneralProvisoire();
+		ClassementGeneralProvisoire cgp3 = new ClassementGeneralProvisoire(er1_1);
 		
 		//RETOUR CLASSEMENT RALLYE DE PARIS
 		System.out.println("\n Rallye de paris Voiture \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Voiture"));

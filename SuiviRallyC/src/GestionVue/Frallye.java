@@ -284,7 +284,7 @@ public class Frallye extends JFrame {
 								break for1;
 							}
 						}
-						Etape e = new Etape((Difficulte)cbDiff.getSelectedItem(), numEtape, distance);
+						Etape e = new Etape((Difficulte)cbDiff.getSelectedItem(),numEtape, distance,er);
 						er.addEtape(e);
 						cbEtape.addItem(er.getNomR() + "." + er.getNumER() + "." + e.getNumEtape());
 						System.out.println("Create OK.");

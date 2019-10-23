@@ -7,9 +7,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import GestionDonnees.Etat;
+import GestionDonnees.TypeRegle;
 import GestionInscription.Camion;
 import GestionInscription.Coureur;
 import GestionInscription.Voiture;
+import GestionRallye.EditionRallye;
 import GestionRallye.Etape;
 import GestionRallye.Speciale;;
 
@@ -69,6 +71,7 @@ public class ClassementEtape {
 
 	public ArrayList<Couple> calculerClassement() {
 		this.etape.setEtat(Etat.clos);
+		this.verifierElimination();
 		ArrayList<Couple> classement = new ArrayList<Couple>();
 		for(Entry<Coureur, ArrayList<SpecialTemps> > e : this.listTemps.entrySet()) {
 			double somme =0;
@@ -96,6 +99,7 @@ public class ClassementEtape {
 			if(this.listRapport.containsKey(c.getKey())) {
 				Rapport r  = this.listRapport.get(c.getKey());
 				if(r.getelimine()) {
+					System.out.println("ELIMINE");
 					classement.remove(i);
 					i--;
 				}
@@ -105,6 +109,70 @@ public class ClassementEtape {
 		//Il faut ensuite trier le classement.
 		Collections.sort(classement, (c1,c2) -> c1.getValue().compareTo(c2.getValue()));
 		return classement;
+	}
+
+	private void verifierElimination() {
+		EditionRallye er = this.etape.getEditionRallye();
+		for(Coureur c : er.getCoureurs()) {
+			ArrayList<SpecialTemps> st = this.avoirTempsCoureur(c);
+			//CA VEUT DIRE QUE LE COUREUR A RATE UN TEMPS 
+			if(st.size() < this.getEtape().getSpeciales().size()) {
+				if(er.getRegle().equals(TypeRegle.superRallye)) {
+					Rapport rpt;
+					for(int i=0;i<this.etape.getSpeciales().size();i++) {
+						int lim = this.etape.getSpeciales().size()-1;
+						Speciale s = this.getEtape().getSpeciales().get(i);
+						SpecialTemps stest = new SpecialTemps(s, (double)0);
+						if(!st.contains(stest)) {
+							if(i == lim) {
+								double pen = 10;
+								System.out.println("Penalité de "+pen+" pour "+c);
+								if(this.listRapport.containsKey(c)) {
+									rpt = this.listRapport.get(c);
+									rpt.penalitetps += pen;
+								}else {
+									rpt = new Rapport(10,false);
+									this.listRapport.put(c,rpt);
+								}
+							}else {
+								double pen = 5;
+								System.out.println("Penalité de "+pen);
+								if(this.listRapport.containsKey(c)) {
+									rpt = this.listRapport.get(c);
+									rpt.penalitetps += pen;
+								}else {
+									rpt = new Rapport(5,false);
+									this.listRapport.put(c,rpt);
+								}
+							}
+						}
+					}
+				}else {
+					//ON L'ELIMINE
+					Rapport r = new Rapport(0,true);
+					System.out.println("ELIMINATED");
+					this.listRapport.put(c, r);
+				}
+			}
+
+		}
+		this.enleverLesElimines();
+	}
+	/***
+	 * Cette méthode supprime les participants ayant été éliminés afin de garantir
+	 * des classements cohérents.
+	 */
+	private void enleverLesElimines() {
+		for(int i=0;i< this.etape.getEditionRallye().getCoureurs().size();i++) {
+			Coureur c = this.etape.getEditionRallye().getCoureurs().get(i);
+			if(this.listRapport.containsKey(c)) {
+				Rapport r = this.listRapport.get(c);
+				if (r.getelimine()) {
+					this.etape.getEditionRallye().getCoureurs().remove(i);
+					i--;
+				}
+			}
+		}
 	}
 
 	/***
@@ -139,7 +207,14 @@ public class ClassementEtape {
 	}
 
 
-
+	/***
+	 * Retourne les temps des spéciales de l'étape du classement.
+	 * @param c
+	 * @return
+	 */
+	public  ArrayList<SpecialTemps> avoirTempsCoureur(Coureur c) {
+		return this.listTemps.get(c);
+	}
 
 	public HashMap<Coureur, ArrayList<SpecialTemps>> getListTemps() {
 		return listTemps;

@@ -14,11 +14,12 @@ public class Etape {
 	private int distanceParcE;
 	private double coeffDiff;
 	private ClassementEtape classement;
+	private EditionRallye editionRallye;
 
 
 
 
-	public Etape(Difficulte difficulte, int numEtape, int distanceParcE) {
+	public Etape(Difficulte difficulte, int numEtape, int distanceParcE,EditionRallye edition) {
 		super();
 		this.difficulte = difficulte;
 		this.numEtape = numEtape;
@@ -26,6 +27,8 @@ public class Etape {
 		this.coeffDiff = calculerCoefDiff();
 		this.speciales = new ArrayList<Speciale>();
 		this.etat = Etat.debute;
+		this.editionRallye = edition;
+		this.editionRallye.addEtape(this);
 	}
 
 	//METHODS
@@ -83,11 +86,11 @@ public class Etape {
 	public void setNumEtape(int numEtape) {
 		this.numEtape = numEtape;
 	}
-	
+
 	public int getDistanceParcE() {
-//		for(Speciale s : this.speciales) {
-//			this.distanceParcE += s.getDistanceParcS();
-//		}
+		//		for(Speciale s : this.speciales) {
+		//			this.distanceParcE += s.getDistanceParcS();
+		//		}
 		return distanceParcE;
 	}
 	public void setDistanceParcE(int distanceParcE) {
@@ -106,15 +109,22 @@ public class Etape {
 		this.speciales = speciales;
 	}
 
-	
 
-	
+
+
 	public Etat getEtat() {
 		return etat;
 	}
 
 	public void setEtat(Etat etat) {
 		this.etat = etat;
+	}
+
+
+
+
+	public EditionRallye getEditionRallye() {
+		return editionRallye;
 	}
 
 	/***

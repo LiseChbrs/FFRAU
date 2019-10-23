@@ -117,10 +117,16 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 		txtTemps = new JTextField("Entrez un temps");
 		txtTemps.setSize(this.getWidth(), 10);
 
-
+		Box hbox = Box.createHorizontalBox();
 		JButton btnEnr = new JButton("Valider Temps");
 		btnEnr.addActionListener(this);
-
+		JButton btnReturn = new JButton("Menu");
+		btnReturn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		vBox.add(txtTemps);
 		vBox.add(btnEnr);
 		this.add(vBox);
