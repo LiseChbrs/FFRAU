@@ -51,7 +51,7 @@ public class F_Inscription extends JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	public F_Inscription(ArrayList<Constructeur> lstConstructeurs, ArrayList<Rallye> lstRallyes, ArrayList<EditionRallye> lstEditionRallyes) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 1000, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
