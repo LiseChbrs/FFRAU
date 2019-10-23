@@ -11,6 +11,7 @@ import GestionDonnees.*;
 import GestionInscription.*;
 import GestionRallye.*;
 import GestionVue.EnregistrementCoureurSpeciale;
+import GestionVue.Frallye;
 
 public class Run {
 
