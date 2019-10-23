@@ -66,7 +66,7 @@ public class Speciale {
 	}
 	
 	public String toString() {
-		return this.numOrdreS + " "+this.distanceParcS;
+		return this.numOrdreS + " ("+this.distanceParcS+")";
 	}
 
 }

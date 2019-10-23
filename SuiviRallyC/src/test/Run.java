@@ -9,6 +9,7 @@ import GestionClassement.*;
 import GestionDonnees.*;
 import GestionInscription.*;
 import GestionRallye.*;
+import GestionVue.EnregistrementCoureurSpeciale;
 
 public class Run {
 
@@ -306,6 +307,7 @@ public class Run {
 			System.out.println("Coureur : "+xi.getNomC()+" "+xi.getPrenomC()+xi.getHistoriqueCoureur());
 		}
 
+		EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er1_1);
 	}
 
 	//
