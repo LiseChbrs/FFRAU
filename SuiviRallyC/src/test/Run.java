@@ -1,5 +1,6 @@
 package test;
 
+import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -12,11 +13,22 @@ import GestionRallye.*;
 
 public class Run {
 
-	public static void main(String[] args) {
-
-		/*
-		 * Initialisation des donnï¿½es
-		 */
+	public static void main (String[] args) {
+		ArrayList<Rallye> listRallye = new ArrayList<Rallye>();
+		listRallye.add(new Rallye("France", "Toulouse", "France", TypeRegle.rallye));
+		ArrayList<EditionRallye> listERallye = new ArrayList<EditionRallye>();
+		ArrayList<Etape> listEtape = new ArrayList<Etape>();
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Frallye frame = new Frallye(listRallye, listERallye, listEtape);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 		Constructeur cons1 = new Constructeur("Mercedes");
 		Constructeur cons2 = new Constructeur("Peugeot");
@@ -257,7 +269,7 @@ public class Run {
 		
 		
 		
-		//Compléter les enregistrements
+		//Complï¿½ter les enregistrements
 		System.out.println("\n ETAPE DE "+er3_1.getNomR());
 		for(Etape e : er3_1.getEtapes()) {
 			e.setEtat(Etat.debute);
