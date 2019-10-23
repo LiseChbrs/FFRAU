@@ -64,7 +64,11 @@ public class Speciale {
 			return false;
 		}
 	}
-	
+
+	public int hashCode() {
+		return (""+this.numOrdreS).hashCode();
+	}
+
 	public String toString() {
 		return this.numOrdreS + " ("+this.distanceParcS+")";
 	}

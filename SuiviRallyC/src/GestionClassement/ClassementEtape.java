@@ -35,11 +35,25 @@ public class ClassementEtape {
 				}else {
 					if(s.getChronoLimiteS() > t) {
 						if(this.listTemps.containsKey(c)) {
-							this.listTemps.get(c).add(new SpecialTemps(s,t));
+							//ICI
+							SpecialTemps spt = new SpecialTemps(s,t);
+							if(this.listTemps.get(c).contains(spt)) {
+								for(int i=0;i<this.listTemps.get(c).size();i++) {
+									SpecialTemps test = this.listTemps.get(c).get(i);
+									if(test.equals(spt)) {
+										this.listTemps.get(c).remove(test);
+										this.listTemps.get(c).add(i,spt);
+										break;
+									}
+								}
+
+							}else {
+								this.listTemps.get(c).add(new SpecialTemps(s,t));
+							}
 						}else {
-							ArrayList<SpecialTemps> spt = new ArrayList<SpecialTemps>();
-							spt.add(new SpecialTemps(s,t));
-							this.listTemps.put(c, spt);
+							ArrayList<SpecialTemps> spta = new ArrayList<SpecialTemps>();
+							spta.add(new SpecialTemps(s,t));
+							this.listTemps.put(c, spta);
 						}
 					}else if (!(s.getChronoLimiteS() > t)){
 						System.out.println("Temps supérieur au chrono limite");
@@ -50,7 +64,20 @@ public class ClassementEtape {
 			}else {
 				if(s.getChronoLimiteS() > t) {
 					if(this.listTemps.containsKey(c)) {
-						this.listTemps.get(c).add(new SpecialTemps(s,t));
+						SpecialTemps spt = new SpecialTemps(s,t);
+						if(this.listTemps.get(c).contains(spt)) {
+							for(int i=0;i<this.listTemps.get(c).size();i++) {
+								SpecialTemps test = this.listTemps.get(c).get(i);
+								if(test.equals(spt)) {
+									this.listTemps.get(c).remove(test);
+									this.listTemps.get(c).add(i,spt);
+									break;
+								}
+							}
+						}else {
+							this.listTemps.get(c).add(spt);	
+						}
+
 					}else {
 						ArrayList<SpecialTemps> spt = new ArrayList<SpecialTemps>();
 						spt.add(new SpecialTemps(s,t));

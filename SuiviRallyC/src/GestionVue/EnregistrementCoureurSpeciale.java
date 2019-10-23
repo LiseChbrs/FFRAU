@@ -75,6 +75,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 		try {
 			ClassementEtape ce = etape.getClassement();
 			ce.enregistrerTemps(coureur, speciale, t);
+			System.out.println(ce.getListTemps());
 		}catch(Exception exception) {
 			ClassementEtape ce = new ClassementEtape(etape);
 			ce.enregistrerTemps(coureur, speciale, t);

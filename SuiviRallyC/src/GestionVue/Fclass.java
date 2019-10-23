@@ -114,10 +114,14 @@ public class Fclass extends JFrame {
 				}
 				System.out.println(matrice);
 				String[] col = {"Place","Coureur","Temps"};
-				String [][] matmatStrings = new String[matrice.size()][3];
+				String [][] matmatStrings = new String[matrice.size()+1][3];
+				matmatStrings[0][0] = "Place";
+				matmatStrings[0][1] = "Coureur";
+				matmatStrings[0][2] = "Temps";
+				
 				for(int i=0;i<matrice.size();i++) {
 					for(int j=0;j<matrice.get(i).size();j++) {
-						matmatStrings[i][j] = matrice.get(i).get(j);
+						matmatStrings[i+1][j] = matrice.get(i).get(j);
 					}
 				}
 				table_1 = new JTable(matmatStrings,col);
