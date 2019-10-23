@@ -62,7 +62,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 	}
 
 	public void init() {
-		this.setTitle("Temps à l'édition :"+er.getNomR()+" "+er.getNumER());
+		this.setTitle("Temps ï¿½ l'ï¿½dition :"+er.getNomR()+" "+er.getNumER());
 		vBox = Box.createVerticalBox();
 		Object[] elements = new Object[er.getEtapes().size()];
 		int i =0;
@@ -70,7 +70,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 			elements[i] = e;
 			i++;
 		}
-		JLabel lblEtape = new JLabel("Sélectionnez une étape");
+		JLabel lblEtape = new JLabel("Sï¿½lectionnez une ï¿½tape");
 		liste1 = new JComboBox(elements);
 		ClassementEtape ce;
 
@@ -88,7 +88,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 			i++;
 		}
 		liste2 = new JComboBox(elements);
-		JLabel lblSpeciale = new JLabel("Sélectionnez une spéciale");
+		JLabel lblSpeciale = new JLabel("Sï¿½lectionnez une spï¿½ciale");
 		vBox.add(lblSpeciale);
 		vBox.add(liste2);
 		elements = new Object[er.getCoureurs().size()];
@@ -120,6 +120,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 
 		JButton btnEnr = new JButton("Valider Temps");
 		btnEnr.addActionListener(this);
+		
 
 		vBox.add(txtTemps);
 		vBox.add(btnEnr);

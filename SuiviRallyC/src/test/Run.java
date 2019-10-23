@@ -12,6 +12,7 @@ import GestionInscription.*;
 import GestionRallye.*;
 import GestionVue.EnregistrementCoureurSpeciale;
 import GestionVue.Frallye;
+import GestionVue.Fmenu;
 
 public class Run {
 
@@ -21,16 +22,7 @@ public class Run {
 		ArrayList<EditionRallye> listERallye = new ArrayList<EditionRallye>();
 		ArrayList<Etape> listEtape = new ArrayList<Etape>();
 		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Frallye frame = new Frallye(listRallye, listERallye, listEtape);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
 
 		Constructeur cons1 = new Constructeur("Mercedes");
 		Constructeur cons2 = new Constructeur("Peugeot");
@@ -319,8 +311,19 @@ public class Run {
 		for(Coureur xi : coureurs) {
 			System.out.println("Coureur : "+xi.getNomC()+" "+xi.getPrenomC()+xi.getHistoriqueCoureur());
 		}
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er1_1);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
-		EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er1_1);
+		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er1_1);
 	}
 
 	//
