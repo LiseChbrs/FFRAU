@@ -175,7 +175,7 @@ public class EditionRallye extends Rallye{
 	 * Retourne le dernier classementProvisoire et met l'etat de l'edition clos.
 	 * @return
 	 */
-	public ClassementGeneralProvisoire calculerClassementDefinitif(){
+	public ClassementGeneralProvisoire getClassementDefinitif(){
 		this.etat = Etat.clos;
 		int index = this.getClassementRallye().size();
 		ClassementGeneralProvisoire cgp;

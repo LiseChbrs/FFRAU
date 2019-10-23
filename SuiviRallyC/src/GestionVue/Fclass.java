@@ -92,13 +92,13 @@ public class Fclass extends JFrame {
 				}
 				ArrayList<Couple> res;
 				if(rdbtnVoiture.isSelected()) {
-					res = erNow.calculerClassementDefinitif().calculerClassementG("Voiture");
+					res = erNow.getClassementDefinitif().calculerClassementG("Voiture");
 				}else if(rdbtnCamion.isSelected()) {
-					res = erNow.calculerClassementDefinitif().calculerClassementG("Camion");
+					res = erNow.getClassementDefinitif().calculerClassementG("Camion");
 				}else if(rdbtnMoto.isSelected()) {
-					res = erNow.calculerClassementDefinitif().calculerClassementG("Moto");
+					res = erNow.getClassementDefinitif().calculerClassementG("Moto");
 				}else {
-					res = erNow.calculerClassementDefinitif().calculerClassementG("");
+					res = erNow.getClassementDefinitif().calculerClassementG("");
 				}
 				
 				ArrayList<ArrayList<String>> matrice = new ArrayList<ArrayList<String>>();

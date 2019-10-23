@@ -51,16 +51,15 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 		String temps = this.txtTemps.getText();
 		double t = Double.parseDouble(temps);
 
-		if(etape.getClassement() != null) {
+		try {
 			ClassementEtape ce = etape.getClassement();
 			ce.enregistrerTemps(coureur, speciale, t);
-		}else {
+		}catch(Exception exception) {
 			ClassementEtape ce = new ClassementEtape(etape);
 			ce.enregistrerTemps(coureur, speciale, t);
 			etape.setClassement(ce);
-
 		}
-		System.out.println(etape.getClassement().calculerClassement());
+		System.out.println("Nouveau classement : \n"+etape.getClassement().calculerClassement());
 	}
 
 	public void init() {

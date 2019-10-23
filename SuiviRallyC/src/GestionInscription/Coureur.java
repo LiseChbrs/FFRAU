@@ -42,7 +42,7 @@ public class Coureur {
 		HashMap<EditionRallye,Integer> historique = new HashMap<EditionRallye, Integer>();
 		for(EditionRallye r : this.participations) {
 			if(r.getCoureurs().contains(this)){
-				ClassementGeneralProvisoire cgp = r.calculerClassementDefinitif();
+				ClassementGeneralProvisoire cgp = r.getClassementDefinitif();
 				
 					HashMap<Integer,ArrayList<Couple>> halo = new HashMap<>();
 					halo.put(1,cgp.calculerClassementG("Voiture"));

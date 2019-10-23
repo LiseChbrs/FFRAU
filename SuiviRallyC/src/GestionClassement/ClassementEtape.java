@@ -29,15 +29,41 @@ public class ClassementEtape {
 
 	public void enregistrerTemps(Coureur c, Speciale s, Double t) {
 		if(this.etape.getEtat().equals(Etat.debute)) {
-			if(this.listTemps.containsKey(c)) {
-				this.listTemps.get(c).add(new SpecialTemps(s,t));
+			if(this.listRapport.containsKey(c) ) {
+				Rapport r = this.listRapport.get(c);
+				if(r.elimine) {
+				}else {
+					if(s.getChronoLimiteS() > t) {
+						if(this.listTemps.containsKey(c)) {
+							this.listTemps.get(c).add(new SpecialTemps(s,t));
+						}else {
+							ArrayList<SpecialTemps> spt = new ArrayList<SpecialTemps>();
+							spt.add(new SpecialTemps(s,t));
+							this.listTemps.put(c, spt);
+						}
+					}else if (!(s.getChronoLimiteS() > t)){
+						System.out.println("Temps supérieur au chrono limite");
+						Rapport re = new Rapport(0, true);
+						this.listRapport.put(c, re);
+					}
+				}
 			}else {
-				ArrayList<SpecialTemps> spt = new ArrayList<SpecialTemps>();
-				spt.add(new SpecialTemps(s,t));
-				this.listTemps.put(c, spt);
+				if(s.getChronoLimiteS() > t) {
+					if(this.listTemps.containsKey(c)) {
+						this.listTemps.get(c).add(new SpecialTemps(s,t));
+					}else {
+						ArrayList<SpecialTemps> spt = new ArrayList<SpecialTemps>();
+						spt.add(new SpecialTemps(s,t));
+						this.listTemps.put(c, spt);
+					}
+				}else if (!(s.getChronoLimiteS() > t)){
+					System.out.println("Temps supérieur au chrono limite");
+					Rapport r = new Rapport(0, true);
+					this.listRapport.put(c, r);
+				}	else {
+					System.out.println("ETAPE CLOSE.");
+				}
 			}
-		}else {
-			System.out.println("ETAPE CLOSE.");
 		}
 	}
 

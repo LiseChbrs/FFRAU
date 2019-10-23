@@ -23,6 +23,7 @@ public class ClassementGeneralProvisoire {
 	public ClassementGeneralProvisoire(EditionRallye er) {
 		this.listClassementEtapes = new ArrayList<ClassementEtape>();
 		this.editionRallye = er;
+		this.editionRallye.addClassementGeneralProvisoire(this);
 	}
 
 	/***

@@ -49,7 +49,7 @@ public class Run {
 		Rallye r1 = new Rallye("Rallye de Paris", "Paris", "France", TypeRegle.rallye);
 		Rallye r2 = new Rallye("Championnat du Monde de Super Rallye", "Londres", "Angleterre", TypeRegle.superRallye);
 		Rallye r3 = new Rallye("Rallye de la Noix de Grenoble", "Grenoble", "France", TypeRegle.rallye);
-		
+
 		EditionRallye er1_1 = new EditionRallye(r1.getNomR(), r1.getVilleR(), r1.getPaysR(), r1.getRegle(), "09-10-18", "18-10-18", 3, 2018);
 		EditionRallye er1_2 = new EditionRallye(r1.getNomR(), r1.getVilleR(), r1.getPaysR(), r1.getRegle(), "09-10-19", "18-10-19", 4, 2019);
 		EditionRallye er2_1 = new EditionRallye(r2.getNomR(), r2.getVilleR(), r2.getPaysR(), r2.getRegle(), "24-05-17", "31-05-17", 7, 2017);
@@ -65,9 +65,9 @@ public class Run {
 		Etape et6 = new Etape(Difficulte.difficulte_moyenne, 3, 22,er3_1);
 
 		//faut il v�rifier que la somme des distanceparc des sp�ciale est �gale � la distance de son �tape ? 
-		Speciale s1 = new Speciale(9.5, 1, 11.5, TypeRegleSpecial.speciale);
-		Speciale s2 = new Speciale(10.5, 2, 10.2, TypeRegleSpecial.superSpeciale);
-		Speciale s3 = new Speciale(8, 3, 11.3, TypeRegleSpecial.speciale);
+		Speciale s1 = new Speciale(9.5, 1, 105, TypeRegleSpecial.speciale);
+		Speciale s2 = new Speciale(10.5, 2, 100.2, TypeRegleSpecial.superSpeciale);
+		Speciale s3 = new Speciale(8, 3, 56.3, TypeRegleSpecial.speciale);
 
 		/************************
 		 * Peuplement des donn�es 
@@ -199,19 +199,20 @@ public class Run {
 		cgp.addClassementEtape(ceet3);
 
 
+
 		ClassementEtape ce2 = new ClassementEtape(et2);
 		Random rdm = new Random();
-		ce2.enregistrerTemps(c1, s1, rdm.nextDouble()+20);
-		ce2.enregistrerTemps(c1, s2, rdm.nextDouble()+20);
-		ce2.enregistrerTemps(c1, s3, rdm.nextDouble()+20);
+		ce2.enregistrerTemps(c1, s1, rdm.nextDouble());
+		ce2.enregistrerTemps(c1, s2, rdm.nextDouble());
+		ce2.enregistrerTemps(c1, s3, rdm.nextDouble());
 
-		ce2.enregistrerTemps(c2, s1, rdm.nextDouble()+20);
-		ce2.enregistrerTemps(c2, s2, rdm.nextDouble()+20);
-		ce2.enregistrerTemps(c2, s3, rdm.nextDouble()+20);
+		ce2.enregistrerTemps(c2, s1, rdm.nextDouble());
+		ce2.enregistrerTemps(c2, s2, rdm.nextDouble());
+		ce2.enregistrerTemps(c2, s3, rdm.nextDouble());
 
-		ce2.enregistrerTemps(c3, s1, rdm.nextDouble()+20);
-		ce2.enregistrerTemps(c3, s2, rdm.nextDouble()+20);
-		ce2.enregistrerTemps(c3, s3, rdm.nextDouble()+20);
+		ce2.enregistrerTemps(c3, s1, rdm.nextDouble());
+		ce2.enregistrerTemps(c3, s2, rdm.nextDouble());
+		ce2.enregistrerTemps(c3, s3, rdm.nextDouble());
 
 		Rapport r11,r21;
 		r11 = new Rapport(+15,false);
@@ -257,9 +258,9 @@ public class Run {
 		ClassementGeneralProvisoire cgp3 = new ClassementGeneralProvisoire(er1_1);
 
 		//RETOUR CLASSEMENT RALLYE DE PARIS
-		System.out.println("\n Rallye de paris Voiture \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Voiture"));
-		System.out.println("\n Rallye de paris Moto \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Camion"));
-		System.out.println("\n Rallye de paris Camion \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Moto"));
+		System.out.println("\n Rallye de paris Voiture \n"+er1_1.getClassementDefinitif().calculerClassementG("Voiture"));
+		System.out.println("\n Rallye de paris Moto \n"+er1_1.getClassementDefinitif().calculerClassementG("Camion"));
+		System.out.println("\n Rallye de paris Camion \n"+er1_1.getClassementDefinitif().calculerClassementG("Moto"));
 
 
 
@@ -297,9 +298,9 @@ public class Run {
 		//		}
 
 		er3_1.addClassementGeneralProvisoire(cgp3);
-		System.out.println("Grenoble Voiture \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Voiture"));
-		System.out.println("Grenoble Moto \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Moto"));
-		System.out.println("Grenoble Camion \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Camion"));
+		System.out.println("Grenoble Voiture \n"+er3_1.getClassementDefinitif().calculerClassementG("Voiture"));
+		System.out.println("Grenoble Moto \n"+er3_1.getClassementDefinitif().calculerClassementG("Moto"));
+		System.out.println("Grenoble Camion \n"+er3_1.getClassementDefinitif().calculerClassementG("Camion"));
 
 
 		ArrayList<Coureur> coureurs = new ArrayList<Coureur>();
@@ -315,16 +316,36 @@ public class Run {
 		listRallye.add(r1);
 		listRallye.add(r2);
 		listRallye.add(r3);
-		
-		listERallye.add(er1_1);
-		
-		
-		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er1_1);
-		frame.setVisible(true);
 
-		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er1_1);
+		listERallye.add(er1_1);
+
+		/************************
+		 * JEU DE DONNEES PROPRE*
+		 ************************/
+		EditionRallye er3_2 = new EditionRallye(r3.getNomR(),r3.getPaysR(),r3.getVilleR(),TypeRegle.rallye,"23/10/2019","23/12/2014",3,2019);
+		er3_2.addEtape(et1);
+		er3_2.addEtape(et2);
+
+		er3_2.addCoureur(c1);
+		er3_2.addCoureur(c2);
+		ClassementGeneralProvisoire classegp = new ClassementGeneralProvisoire(er3_2);
+		for(Etape e : er3_2.getEtapes()) {
+			ClassementEtape classe = new ClassementEtape(e);
+			for(Speciale k : e.getSpeciales()) {
+				for(Coureur coureur : er3_2.getCoureurs()) {
+					classe.enregistrerTemps(coureur, k, rdm.nextDouble()+1);
+				}
+			}
+			classegp.addClassementEtape(classe);
+		}
+
+		/*************
+		 * INTERFACES*
+		 *************/
+		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er3_2);
+		frame.setVisible(true);
+		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er3_2);
 	}
 
-	//
 
 }

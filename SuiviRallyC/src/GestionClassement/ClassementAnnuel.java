@@ -23,7 +23,7 @@ public class ClassementAnnuel {
 		ArrayList<Couple> listPart = new ArrayList<Couple>();
 		for (EditionRallye er : listER) {
 			if (er.getAnneeER() == annee && er.getClassementGeneralProvisoires().size() >=1) {
-				ClassementGeneralProvisoire cgp = er.calculerClassementDefinitif();
+				ClassementGeneralProvisoire cgp = er.getClassementDefinitif();
 				if (cgp != null) {
 				for (Couple cp : cgp.calculerClassementG(typeV)) {
 					boolean isExist = false;
