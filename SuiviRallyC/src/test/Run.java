@@ -49,7 +49,7 @@ public class Run {
 		Rallye r1 = new Rallye("Rallye de Paris", "Paris", "France", TypeRegle.rallye);
 		Rallye r2 = new Rallye("Championnat du Monde de Super Rallye", "Londres", "Angleterre", TypeRegle.superRallye);
 		Rallye r3 = new Rallye("Rallye de la Noix de Grenoble", "Grenoble", "France", TypeRegle.rallye);
-
+		
 		EditionRallye er1_1 = new EditionRallye(r1.getNomR(), r1.getVilleR(), r1.getPaysR(), r1.getRegle(), "09-10-18", "18-10-18", 3, 2018);
 		EditionRallye er1_2 = new EditionRallye(r1.getNomR(), r1.getVilleR(), r1.getPaysR(), r1.getRegle(), "09-10-19", "18-10-19", 4, 2019);
 		EditionRallye er2_1 = new EditionRallye(r2.getNomR(), r2.getVilleR(), r2.getPaysR(), r2.getRegle(), "24-05-17", "31-05-17", 7, 2017);
@@ -312,7 +312,13 @@ public class Run {
 			System.out.println("Coureur : "+xi.getNomC()+" "+xi.getPrenomC()+xi.getHistoriqueCoureur());
 		}
 
-
+		listRallye.add(r1);
+		listRallye.add(r2);
+		listRallye.add(r3);
+		
+		listERallye.add(er1_1);
+		
+		
 		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er1_1);
 		frame.setVisible(true);
 
