@@ -42,8 +42,13 @@ public class petitJeuDeDonnees {
 		Etape et2 = new Etape(Difficulte.difficulte_moyenne, 2, 20,er1_1);
 		Etape et3 = new Etape(Difficulte.sans_difficulte_particuliere, 3, 18,er1_1);
 
-		Speciale s1 = new Speciale(9.5, 1, 21.5, TypeRegleSpecial.speciale);
-		Speciale s2 = new Speciale(10.5, 2, 10.2, TypeRegleSpecial.superSpeciale);
+		/********************************************************************
+		 * ATTENTION !*******************************************************
+		 * Rajouter le chronoLimite > aux temps pour éviter les éliminations*
+		 * ******************************************************************
+		 ********************************************************************/
+		Speciale s1 = new Speciale(9.5, 1, 215.5, TypeRegleSpecial.speciale);
+		Speciale s2 = new Speciale(10.5, 2, 101.2, TypeRegleSpecial.superSpeciale);
 
 		et1.addSpeciale(s1);
 		et1.addSpeciale(s2);
@@ -64,7 +69,7 @@ public class petitJeuDeDonnees {
 			for(Speciale s : e.getSpeciales()) {
 				for(Coureur c : er1_1.getCoureurs()) {
 
-					if(c.equals(c1) && s.equals(s1) && e.equals(et2)) {
+					if(c.equals(c1) && s.equals(s2) && e.equals(et2)) {
 					}else {
 						Random rdm = new Random();
 						double temps = rdm.nextDouble()+10;
