@@ -362,6 +362,30 @@ public class Frallye extends JFrame {
 		btnCreatRallye.setBounds(574, 7, 112, 23);
 		contentPane.add(btnCreatRallye);
 		
+		JButton btnReturnMenu = new JButton("Return Menu");
+		btnReturnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnReturnMenu.setBounds(10, 227, 122, 23);
+		contentPane.add(btnReturnMenu);
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+		
+
+		
+
+		
 
 	}
 }

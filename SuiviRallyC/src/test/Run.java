@@ -12,6 +12,7 @@ import GestionInscription.*;
 import GestionRallye.*;
 import GestionVue.EnregistrementCoureurSpeciale;
 import GestionVue.Frallye;
+import GestionVue.Fmenu;
 
 public class Run {
 
@@ -20,17 +21,8 @@ public class Run {
 		listRallye.add(new Rallye("France", "Toulouse", "France", TypeRegle.rallye));
 		ArrayList<EditionRallye> listERallye = new ArrayList<EditionRallye>();
 		ArrayList<Etape> listEtape = new ArrayList<Etape>();
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Frallye frame = new Frallye(listRallye, listERallye, listEtape);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
+
 
 		Constructeur cons1 = new Constructeur("Mercedes");
 		Constructeur cons2 = new Constructeur("Peugeot");
@@ -160,9 +152,9 @@ public class Run {
 
 
 		//Coureurs
-//		er1_2.addCoureur(c4);
-//		er1_2.addCoureur(c2);
-//		er1_2.addCoureur(c1);
+		//		er1_2.addCoureur(c4);
+		//		er1_2.addCoureur(c2);
+		//		er1_2.addCoureur(c1);
 
 		/*
 		 *Rallye 2 �dition 1 
@@ -174,11 +166,11 @@ public class Run {
 		er2_1.addEtape(et6);
 
 		//Coureurs
-//		er2_1.addCoureur(c3);
-//		er2_1.addCoureur(c4);
-//		er2_1.addCoureur(c5);
-//		er2_1.addCoureur(c2);
-//		er2_1.addCoureur(c1);
+		//		er2_1.addCoureur(c3);
+		//		er2_1.addCoureur(c4);
+		//		er2_1.addCoureur(c5);
+		//		er2_1.addCoureur(c2);
+		//		er2_1.addCoureur(c1);
 
 		/*
 		 *Rallye 3 �dition 1 
@@ -263,14 +255,14 @@ public class Run {
 		}
 
 		ClassementGeneralProvisoire cgp3 = new ClassementGeneralProvisoire(er1_1);
-		
+
 		//RETOUR CLASSEMENT RALLYE DE PARIS
 		System.out.println("\n Rallye de paris Voiture \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Voiture"));
 		System.out.println("\n Rallye de paris Moto \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Camion"));
 		System.out.println("\n Rallye de paris Camion \n"+er1_1.calculerClassementDefinitif().calculerClassementG("Moto"));
-		
-		
-		
+
+
+
 		//Compl�ter les enregistrements
 		System.out.println("\n ETAPE DE "+er3_1.getNomR());
 		for(Etape e : er3_1.getEtapes()) {
@@ -300,16 +292,16 @@ public class Run {
 			cgp3.addClassementEtape(cE);
 		}
 
-//		for(Etape e : er3_1.getEtapes()) {
-//			System.out.println(e.getClassement().calculerClassement());
-//		}
+		//		for(Etape e : er3_1.getEtapes()) {
+		//			System.out.println(e.getClassement().calculerClassement());
+		//		}
 
 		er3_1.addClassementGeneralProvisoire(cgp3);
 		System.out.println("Grenoble Voiture \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Voiture"));
 		System.out.println("Grenoble Moto \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Moto"));
 		System.out.println("Grenoble Camion \n"+er3_1.calculerClassementDefinitif().calculerClassementG("Camion"));
-		
-		
+
+
 		ArrayList<Coureur> coureurs = new ArrayList<Coureur>();
 		coureurs.add(c1);
 		//coureurs.add(c2);
@@ -320,7 +312,11 @@ public class Run {
 			System.out.println("Coureur : "+xi.getNomC()+" "+xi.getPrenomC()+xi.getHistoriqueCoureur());
 		}
 
-		EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er1_1);
+
+		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er1_1);
+		frame.setVisible(true);
+
+		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er1_1);
 	}
 
 	//
