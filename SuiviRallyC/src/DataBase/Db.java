@@ -40,6 +40,10 @@ public class Db {
 		}return st;
 	}
 
+	public static void insert(Statement state,String requete) throws SQLException {
+		//L'objet ResultSet contient le résultat de la requête SQL
+		ResultSet result = state.executeQuery(requete);
+	}
 
 	public static void request(Statement state,String requete) throws SQLException {
 		//L'objet ResultSet contient le résultat de la requête SQL
