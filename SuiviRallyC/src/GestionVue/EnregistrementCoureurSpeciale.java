@@ -22,6 +22,7 @@ import GestionClassement.ClassementEtape;
 import GestionDonnees.Etat;
 import GestionDonnees.Rallye;
 import GestionDonnees.TypeRegle;
+import GestionInscription.Constructeur;
 import GestionInscription.Coureur;
 import GestionRallye.EditionRallye;
 import GestionRallye.Etape;
@@ -129,8 +130,8 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 				listRallye.add(new Rallye("France", "Toulouse", "France", TypeRegle.rallye));
 				ArrayList<EditionRallye> listERallye = new ArrayList<EditionRallye>();
 				ArrayList<Etape> listEtape = new ArrayList<Etape>();
-
-				Fmenu menu = new Fmenu(listRallye, listERallye, listEtape, er);
+				ArrayList<Constructeur> listCons = new ArrayList<Constructeur>();
+				Fmenu menu = new Fmenu(listRallye, listERallye, listEtape, er,listCons);
 				menu.setVisible(true);
 
 			}

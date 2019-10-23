@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import GestionDonnees.Rallye;
+import GestionInscription.Constructeur;
 import GestionRallye.EditionRallye;
 import GestionRallye.Etape;
 
@@ -27,7 +28,7 @@ public class Fmenu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Fmenu(ArrayList<Rallye> listRallye, ArrayList<EditionRallye> listERallye, ArrayList<Etape> listEtape, EditionRallye er) {
+	public Fmenu(ArrayList<Rallye> listRallye, ArrayList<EditionRallye> listERallye, ArrayList<Etape> listEtape, EditionRallye er, ArrayList<Constructeur> listCons) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -51,6 +52,12 @@ public class Fmenu extends JFrame {
 		contentPane.add(btnGestionRallye);
 		
 		JButton btnGestionInscription = new JButton("Gestion Inscription");
+		btnGestionInscription.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				F_Inscription frame = new F_Inscription(listCons,listRallye,listERallye);
+				frame.setVisible(true);
+			}
+		});
 		btnGestionInscription.setBounds(96, 97, 251, 23);
 		contentPane.add(btnGestionInscription);
 		
