@@ -39,7 +39,7 @@ public class Fmenu extends JFrame {
 		btnGestionRallye.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Frallye frame = new Frallye(listRallye, listERallye, listEtape);
+					Frallye frame = new Frallye(listRallye, listERallye, listEtape,er);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -69,6 +69,19 @@ public class Fmenu extends JFrame {
 		
 		btnEnregisterTemps.setBounds(96, 144, 251, 23);
 		contentPane.add(btnEnregisterTemps);
+		
+		JButton btnNewButton = new JButton("Gestion Classement");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Fclass frame = new Fclass(listRallye, listERallye, listEtape);
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnNewButton.setBounds(96, 199, 251, 29);
+		contentPane.add(btnNewButton);
 	}
-
 }

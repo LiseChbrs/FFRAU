@@ -38,9 +38,9 @@ public class Frallye extends JFrame {
 	private JTextField textField_10;
 	private JTextField textField_11;
 	
-	public Frallye(ArrayList<Rallye> listRallye, ArrayList<EditionRallye> listERallye, ArrayList<Etape> listEtape) {
+	public Frallye(ArrayList<Rallye> listRallye, ArrayList<EditionRallye> listERallye, ArrayList<Etape> listEtape, EditionRallye err) {
 		this.listRallye = listRallye;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 742, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -365,7 +365,8 @@ public class Frallye extends JFrame {
 		JButton btnReturnMenu = new JButton("Return Menu");
 		btnReturnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				Fmenu menu = new Fmenu(listRallye, listERallye, listEtape, err);
+				menu.setVisible(true);
 			}
 		});
 		btnReturnMenu.setBounds(10, 227, 122, 23);
