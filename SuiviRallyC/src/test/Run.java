@@ -45,7 +45,7 @@ public class Run {
 
 		//ASSOCIER 4 COUREURS
 		c1.associerConstructeur(cons1);
-		c2.associerConstructeur(cons1);
+		c2.associerConstructeur(cons2);
 		c3.associerConstructeur(cons3);
 		c4.associerConstructeur(cons3);
 
@@ -321,6 +321,9 @@ public class Run {
 		listRallye.add(r3);
 
 		listERallye.add(er1_1);
+		listERallye.add(er2_1);
+		listERallye.add(er1_2);
+		listERallye.add(er3_1);
 
 
 
@@ -351,15 +354,18 @@ public class Run {
 			}
 			classegp.addClassementEtape(classe);
 		}
+		//System.out.println(classegp.calculerClassementG(""));
+		//System.out.println(classegp.calculerClassementCons());
 
 		/*************
 		 * INTERFACES*
 		 *************/
-		System.out.println("PARTICIPANTS RESTANTS : "+er3_2.getCoureurs());
+		listERallye.add(er3_2);
+		//System.out.println("PARTICIPANTS RESTANTS : "+er3_2.getCoureurs());
 		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er3_2, listCons);
 		frame.setVisible(true);
 
-		listERallye.add(er1_1);
+		//listERallye.add(er1_1);
 
 		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er3_2);
 	}

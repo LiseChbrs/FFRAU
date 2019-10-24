@@ -20,8 +20,10 @@ public class Db {
 	private static Statement st;
 
 
-
-	public static Statement Statement_connection() {
+	/*
+	 * connexion à la base
+	 */
+	public static Connection connection() {
 		ArrayList<Rallye> listRallye = new ArrayList<Rallye>();
 		listRallye.add(new Rallye("France", "Toulouse", "France", TypeRegle.rallye));
 		ArrayList<EditionRallye> listERallye = new ArrayList<EditionRallye>();
@@ -30,24 +32,28 @@ public class Db {
 		try{
 			String ur1 ="jdbc:sqlite:temp.db";
 			con=DriverManager.getConnection(ur1);
-			st=con.createStatement();
+			//st=con.createStatement();
 			System.out.println("succesful");
 
 
 		}catch(Exception ex) {
 			System.out.println("Connection failed");
 
-		}return st;
+		}return con;
 	}
+	
+	
+	/*
+	 * pour afficher une table dans la console
+	 */
 
-	public static void insert(Statement state,String requete) throws SQLException {
+	public static void request(Connection state,String requete) throws SQLException {
 		//L'objet ResultSet contient le résultat de la requête SQL
-		ResultSet result = state.executeQuery(requete);
-	}
-
-	public static void request(Statement state,String requete) throws SQLException {
-		//L'objet ResultSet contient le résultat de la requête SQL
-		ResultSet result = state.executeQuery(requete);
+		
+		Statement st = null ; 
+		st = state.createStatement();
+		
+		ResultSet result = st.executeQuery(requete);
 		//On récupère les MetaData
 		ResultSetMetaData resultMeta = result.getMetaData();
 
@@ -64,20 +70,38 @@ public class Db {
 
 			System.out.println("\n---------------------------------------------------------------------------------------------------------------------------------------------------------");
 
+			/*while(result.next()){   
+				for(int i = 1; i <= resultMeta.getColumnCount(); i++) {
+				    int valueVO = result.getInt("puissanceVO");
+				    int valueMO = result.getInt("cylindreMO");
+				    int valueCA = result.getInt("poidsCA");
+
+					if(result.wasNull()) {
+			            System.out.println("null");
+					}else if (result.getObject(i).equals(valueVO)){
+						System.out.print("\t" + valueVO + "\t |");
+					}else if (result.getObject(i).equals(valueMO)) {
+						System.out.print("\t" + valueMO + "\t |");
+					}else if (result.getObject(i).equals(valueCA)) {
+						System.out.print("\t" + valueCA + "\t |");
+
+					}
+
+					}
+				}*/
 		}
 
 		result.close();
 	}
 
-
+	/*
+	 * execute la requete
+	 */
 	public static void main(String[]args) throws SQLException {
-		Statement cx;
-		cx = Statement_connection();
+		Connection cx;
+		cx = connection();
 		String sql = "Select * from coureur;";
 		request(cx,sql);
-
-		String QueryString="insert into coureur('txt.getString()','txte.getString()')";
-
 
 	}
 

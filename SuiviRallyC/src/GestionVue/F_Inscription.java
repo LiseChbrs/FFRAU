@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+
+import DataBase.Db;
 import GestionDonnees.Rallye;
 import GestionInscription.Camion;
 import GestionInscription.Constructeur;
@@ -17,6 +19,7 @@ import GestionInscription.Voiture;
 import GestionRallye.EditionRallye;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
@@ -24,7 +27,11 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -293,7 +300,7 @@ public class F_Inscription extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				textField_12.setVisible(false);
 				textField_14.setVisible(false);
-				lblPoids.setVisible(false);
+				lblPuissance.setVisible(false);
 				lblCylindree.setVisible(false);
 				textField_13.setVisible(true);
 				lblPoids.setVisible(true);
@@ -439,6 +446,50 @@ public class F_Inscription extends JFrame {
 						System.out.println("Le coureur a été inscrit.");
 					}catch(Exception exception) {
 						System.out.println("Ca n'a pas marché !");
+					}
+
+				}
+
+				/***
+				 * INSERTION DANS LA BD
+				 */
+				//dans le bouton de validation	
+
+				String requete = "insert into coureur(numC, nomC, prenomC, dateNaissC, groupeSanguin, rhesusC) values(?,?,?,?,?,?)";
+
+				Statement state =null;
+				ResultSet rs = null; 
+				PreparedStatement ps = null;
+				Connection conn = null;
+
+				try {
+					//state = Db.Statement_connection();
+					conn= Db.connection();
+					ps = conn.prepareStatement(requete);
+
+					rs = ps.getGeneratedKeys();
+					if (rs.next()) {
+						System.out.println("Auto Generated Primary Key " + rs.getInt(1));
+					}
+					ps.setInt(1, rs.getInt(1));
+					ps.setString(2, textField.getText());
+					ps.setString(3, textField_1.getText());
+					ps.setString(4, textField_8.getText());
+					ps.setString(5, textField_9.getText());
+					ps.setString(6, textField_10.getText());
+
+					ps.executeUpdate();
+
+					JOptionPane.showMessageDialog(null, "Enregistré en bd");
+
+				}catch(Exception e) {
+					System.out.println(e);
+				} finally {
+					try {
+						ps.close();
+						rs.close();
+					}catch(Exception e) {
+
 					}
 
 				}
