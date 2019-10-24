@@ -25,6 +25,7 @@ public class ClassementEtape {
 		this.listTemps = new HashMap<Coureur, ArrayList<SpecialTemps>>();
 		this.etape = etape;
 		this.listRapport = new HashMap<Coureur, Rapport>();
+		this.etape.setClassement(this);
 	}
 
 	public void enregistrerTemps(Coureur c, Speciale s, Double t) {

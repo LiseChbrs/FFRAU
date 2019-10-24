@@ -30,7 +30,7 @@ public class Run {
 		listCons.add(cons1);
 		listCons.add(cons2);
 		listCons.add(cons3);
-		
+
 		Vehicule v1 = new Camion("TWN PKS", 300, cons1);
 		Vehicule v2 = new Moto("PRK SN RC", 100, cons3);
 		Vehicule v3 = new Voiture("THFFC", 150, cons2);
@@ -69,7 +69,7 @@ public class Run {
 
 		//faut il v�rifier que la somme des distanceparc des sp�ciale est �gale � la distance de son �tape ? 
 		Speciale s1 = new Speciale(9.5, 1, 105, TypeRegleSpecial.speciale);
-		Speciale s2 = new Speciale(10.5, 2, 100.2, TypeRegleSpecial.superSpeciale);
+		Speciale s2 = new Speciale(10.5, 2, 120.2, TypeRegleSpecial.superSpeciale);
 		Speciale s3 = new Speciale(8, 3, 56.3, TypeRegleSpecial.speciale);
 
 		/************************
@@ -86,9 +86,9 @@ public class Run {
 
 
 		//Etapes
-		er1_1.addEtape(et1);
-		er1_1.addEtape(et2);
-		er1_1.addEtape(et3);
+		//		er1_1.addEtape(et1);
+		//		er1_1.addEtape(et2);
+		//		er1_1.addEtape(et3);
 
 		//Speciale
 		et1.addSpeciale(s1);
@@ -148,10 +148,10 @@ public class Run {
 		 *Rallye 1 �dition 2 
 		 ********************/
 
-		//Etapes
-		er1_2.addEtape(et4);
-		er1_2.addEtape(et5);
-		er1_2.addEtape(et6);	
+		//		//Etapes
+		//		er1_2.addEtape(et4);
+		//		er1_2.addEtape(et5);
+		//		er1_2.addEtape(et6);	
 
 
 		//Coureurs
@@ -163,10 +163,10 @@ public class Run {
 		 *Rallye 2 �dition 1 
 		 */
 
-		//Etapes
-		er2_1.addEtape(et4);
-		er2_1.addEtape(et5);
-		er2_1.addEtape(et6);
+		//		//Etapes
+		//		er2_1.addEtape(et4);
+		//		er2_1.addEtape(et5);
+		//		er2_1.addEtape(et6);
 
 		//Coureurs
 		//		er2_1.addCoureur(c3);
@@ -179,10 +179,10 @@ public class Run {
 		 *Rallye 3 �dition 1 
 		 */
 
-		//Etapes
-		er3_1.addEtape(et1);
-		er3_1.addEtape(et2);
-		er3_1.addEtape(et3);
+		//		//Etapes
+		//		er3_1.addEtape(et1);
+		//		er3_1.addEtape(et2);
+		//		er3_1.addEtape(et3);
 
 		//Coureurs 
 		er3_1.addCoureur(c1);
@@ -319,23 +319,30 @@ public class Run {
 		listRallye.add(r1);
 		listRallye.add(r2);
 		listRallye.add(r3);
-		
+
 		listERallye.add(er1_1);
-		
-		
-		
+
+
+
 
 		/************************
 		 * JEU DE DONNEES PROPRE*
 		 ************************/
 		EditionRallye er3_2 = new EditionRallye(r3.getNomR(),r3.getPaysR(),r3.getVilleR(),TypeRegle.rallye,"23/10/2019","23/12/2014",3,2019);
 		er3_2.addEtape(et1);
-		er3_2.addEtape(et2);
+
+		Etape etX = new Etape(Difficulte.tres_difficile,2,125,er3_2);
+		etX.addSpeciale(s1);
+		etX.addSpeciale(s2);
+		etX.addSpeciale(s3);
+		//er3_2.addEtape(etX);
+
 
 		er3_2.addCoureur(c1);
 		er3_2.addCoureur(c2);
 		ClassementGeneralProvisoire classegp = new ClassementGeneralProvisoire(er3_2);
 		for(Etape e : er3_2.getEtapes()) {
+			e.setEtat(Etat.debute);
 			ClassementEtape classe = new ClassementEtape(e);
 			for(Speciale k : e.getSpeciales()) {
 				for(Coureur coureur : er3_2.getCoureurs()) {
@@ -348,11 +355,12 @@ public class Run {
 		/*************
 		 * INTERFACES*
 		 *************/
+		System.out.println("PARTICIPANTS RESTANTS : "+er3_2.getCoureurs());
 		Fmenu frame = new Fmenu(listRallye, listERallye, listEtape,er3_2, listCons);
 		frame.setVisible(true);
 
 		listERallye.add(er1_1);
-		
+
 		//EnregistrementCoureurSpeciale ecs = new EnregistrementCoureurSpeciale(er3_2);
 	}
 
