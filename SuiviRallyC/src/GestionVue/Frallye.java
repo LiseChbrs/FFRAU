@@ -365,48 +365,48 @@ public class Frallye extends JFrame {
 				}
 
 
-				/***
-				 * INSERTION DANS LA BD
-				 */
-
-
-				//sur le code de l'interface Frallye, dans le bouton de validation create rallye
-
-				String requete = "insert into rallye(idR, nomR, villeR, paysR) values(?,?,?,?)";
-
-				Statement state =null;
-				ResultSet rs = null; 
-				PreparedStatement ps = null;
-				Connection conn = null;
-				try {
-
-					ps = conn.prepareStatement(requete);
-
-					rs = ps.getGeneratedKeys();
-					if (rs.next()) {
-						System.out.println("Auto Generated Primary Key " + rs.getInt(1));
-					}
-					ps.setInt(1, rs.getInt(1));
-					ps.setString(2, textField.getText());
-					ps.setString(3, textField_1.getText());
-					ps.setString(4, textField_2.getText());
-
-
-					ps.executeUpdate();
-
-					JOptionPane.showMessageDialog(null, "Enregistré en bd");
-
-				}catch(Exception e2) {
-					System.out.println(e2);
-				} finally {
-					try {
-						ps.close();
-						rs.close();
-					}catch(Exception e2) {
-
-					}
-
-				}
+//				/***
+//				 * INSERTION DANS LA BD
+//				 */
+//
+//
+//				//sur le code de l'interface Frallye, dans le bouton de validation create rallye
+//
+//				String requete = "insert into rallye(idR, nomR, villeR, paysR) values(?,?,?,?)";
+//
+//				Statement state =null;
+//				ResultSet rs = null; 
+//				PreparedStatement ps = null;
+//				Connection conn = null;
+//				try {
+//
+//					ps = conn.prepareStatement(requete);
+//
+//					rs = ps.getGeneratedKeys();
+//					if (rs.next()) {
+//						System.out.println("Auto Generated Primary Key " + rs.getInt(1));
+//					}
+//					ps.setInt(1, rs.getInt(1));
+//					ps.setString(2, textField.getText());
+//					ps.setString(3, textField_1.getText());
+//					ps.setString(4, textField_2.getText());
+//
+//
+//					ps.executeUpdate();
+//
+//					JOptionPane.showMessageDialog(null, "Enregistré en bd");
+//
+//				}catch(Exception e2) {
+//					System.out.println(e2);
+//				} finally {
+//					try {
+//						ps.close();
+//						rs.close();
+//					}catch(Exception e2) {
+//
+//					}
+//
+//		}
 			}
 		});
 		btnCreatRallye.setBounds(574, 7, 112, 23);

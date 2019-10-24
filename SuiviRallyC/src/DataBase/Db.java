@@ -100,7 +100,7 @@ public class Db {
 	public static void main(String[]args) throws SQLException {
 		Connection cx;
 		cx = connection();
-		String sql = "Select * from coureur;";
+		String sql = "Select * from rallye;";
 		request(cx,sql);
 
 	}
