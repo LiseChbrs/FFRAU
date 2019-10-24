@@ -40,6 +40,7 @@ public class EnregistrementCoureurSpeciale extends JFrame implements ActionListe
 
 	public EnregistrementCoureurSpeciale(EditionRallye er,ArrayList<Rallye> listRallye, ArrayList<EditionRallye> listERallye,ArrayList<Etape> listEtape,ArrayList<Constructeur> listCons) {
 		this.er = er;
+		this.setIconImage(new ImageIcon("src/iconR.jpg/").getImage());
 		this.init();
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

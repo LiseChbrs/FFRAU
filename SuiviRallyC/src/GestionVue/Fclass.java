@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -37,6 +38,7 @@ public class Fclass extends JFrame {
 	 */
 	public Fclass(ArrayList<Rallye> listRallye, ArrayList<EditionRallye> listERallye, ArrayList<Etape> listEtape) {
 		String type = "";
+		this.setIconImage(new ImageIcon("src/iconR.jpg/").getImage());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

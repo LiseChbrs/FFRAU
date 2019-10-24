@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Date;
@@ -53,6 +54,7 @@ public class F_Inscription extends JFrame {
 	@SuppressWarnings("unchecked")
 	public F_Inscription(ArrayList<Constructeur> lstConstructeurs, ArrayList<Rallye> lstRallyes, ArrayList<EditionRallye> lstEditionRallyes) {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.setIconImage(new ImageIcon("src/iconR.jpg/").getImage());
 		setBounds(100, 100, 1000, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
